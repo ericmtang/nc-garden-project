@@ -25,7 +25,7 @@ const NavigationBar = (props) => {
   return (
     <div>
       <Navbar className="" color="success" dark expand="md">
-        <NavbarBrand className="mx-3" href="/">
+        <NavbarBrand className="mx-3" tag={Link} to="/home/">
           <h1 style={style1}>GrowTogether</h1>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />

@@ -17,11 +17,12 @@ function App() {
         <div className="container mt-2" style={{ marginTop: 40 }}>
           <Switch>
             <Route exact path="/" render={(props) => <Home />} />
-            <Route exact path="/Blog" render={(props) => <Blog />} />
-            <Route exact path="/Store" render={(props) => <Store />} />
-            <Route exact path="/Classifieds" render={(props) => <Classifieds />} />
-            <Route exact path="/Recipes" render={(props) => <Recipes />} />
-            <Route exact path="/PlantDB" render={(props) => <PlantDB />} />
+            <Route path="/Blog" render={(props) => <Blog />} />
+            <Route path="/Store" render={(props) => <Store />} />
+            <Route path="/Classifieds" render={(props) => <Classifieds />} />
+            <Route path="/Recipes" render={(props) => <Recipes />} />
+            <Route path="/PlantDB" render={(props) => <PlantDB />} />
+            <Route path="/Home" render={(props) => <Home />} />
             {/*
               <Home />
             </Route> 
