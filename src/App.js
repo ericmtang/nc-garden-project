@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, HashRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
@@ -7,7 +7,7 @@ import Store from "./components/Store";
 import Classifieds from "./components/Classifieds";
 import Recipes from "./components/Recipes";
 import PlantDB from "./components/PlantDB";
-import background from "./img/bg1.jpg"
+import background from "./img/bg1.jpg";
 import "./App.css";
 
 function App() {

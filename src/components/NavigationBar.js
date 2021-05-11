@@ -8,10 +8,10 @@ import {
   Nav,
   NavLink,
   NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
+  //UncontrolledDropdown,
+  //DropdownToggle,
+  //DropdownMenu,
+  //DropdownItem,
   NavbarText,
 } from "reactstrap";
 
@@ -22,10 +22,12 @@ const NavigationBar = (props) => {
     fontFamily: "Adelfa",
     fontSize: "300%",
   };
+  /*
   const style2 = {
     fontFamily: "Comfortaa",
     fontSize: "100%",
   };
+  */
   return (
     <div>
       <Navbar className="" color="success" dark expand="md">
@@ -36,19 +38,29 @@ const NavigationBar = (props) => {
         <Collapse isOpen={isOpen} navbar className="p-3">
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink tag={Link} to="/plantdb/">Plant Database</NavLink>
+              <NavLink tag={Link} to="/plantdb/">
+                Plant Database
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/blog/">Blog</NavLink>
+              <NavLink tag={Link} to="/blog/">
+                Blog
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/recipes/">Recipes</NavLink>
+              <NavLink tag={Link} to="/recipes/">
+                Recipes
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/store/">Store</NavLink>
+              <NavLink tag={Link} to="/store/">
+                Store
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/classifieds/">Classifieds</NavLink>
+              <NavLink tag={Link} to="/classifieds/">
+                Classifieds
+              </NavLink>
             </NavItem>
             {/*
             <UncontrolledDropdown nav inNavbar>
