@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nc-garden-project/static/css/main.12a9be42.chunk.css",
-    "main.js": "/nc-garden-project/static/js/main.357105ea.chunk.js",
-    "main.js.map": "/nc-garden-project/static/js/main.357105ea.chunk.js.map",
+    "main.js": "/nc-garden-project/static/js/main.2c528aef.chunk.js",
+    "main.js.map": "/nc-garden-project/static/js/main.2c528aef.chunk.js.map",
     "runtime-main.js": "/nc-garden-project/static/js/runtime-main.ad544c67.js",
     "runtime-main.js.map": "/nc-garden-project/static/js/runtime-main.ad544c67.js.map",
     "static/css/2.acd75131.chunk.css": "/nc-garden-project/static/css/2.acd75131.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.acd75131.chunk.css",
     "static/js/2.0364e901.chunk.js",
     "static/css/main.12a9be42.chunk.css",
-    "static/js/main.357105ea.chunk.js"
+    "static/js/main.2c528aef.chunk.js"
   ]
 }
