@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -32,19 +32,19 @@ const NavigationBar = (props) => {
         <Collapse isOpen={isOpen} navbar className="p-3">
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/plantdb/">Plant Database</NavLink>
+              <NavLink tag={Link} to="/plantdb/">Plant Database</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/blog/">Blog</NavLink>
+              <NavLink tag={Link} to="/blog/">Blog</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/recipes/">Recipes</NavLink>
+              <NavLink tag={Link} to="/recipes/">Recipes</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/store/">Store</NavLink>
+              <NavLink tag={Link} to="/store/">Store</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/classifieds/">Classifieds</NavLink>
+              <NavLink tag={Link} to="/classifieds/">Classifieds</NavLink>
             </NavItem>
             {/*
             <UncontrolledDropdown nav inNavbar>
