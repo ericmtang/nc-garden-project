@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: 'Adelfa';
+  src: local('Adelfa'), url(./fonts/Adelfa-2ODaK.otf) format('opentype');
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

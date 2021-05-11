@@ -5,6 +5,8 @@ import Home from "./components/Home"
 import Blog from "./components/Blog"
 import Store from "./components/Store"
 import Classifieds from "./components/Classifieds"
+import Recipes from "./components/Recipes"
+import PlantDB from "./components/PlantDB"
 import "./App.css";
 
 function App() {
@@ -25,6 +27,12 @@ function App() {
           </Route>
           <Route path="/Classifieds">
             <Classifieds />
+          </Route>
+          <Route path="/Recipes">
+            <Recipes />
+          </Route>
+          <Route path="/PlantDB">
+            <PlantDB />
           </Route>
         </Switch>
       </div>
