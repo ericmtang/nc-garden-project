@@ -12,6 +12,11 @@ body {
   src: local('Adelfa'), url(./fonts/Adelfa-2ODaK.otf) format('opentype');
 }
 
+@font-face {
+  font-family: 'Comfortaa';
+  src: local('Comfortaa', url(./fonts/Comfortaa-Regular.ttf) format('truetype'));
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

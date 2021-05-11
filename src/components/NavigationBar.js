@@ -22,6 +22,10 @@ const NavigationBar = (props) => {
     fontFamily: "Adelfa",
     fontSize: "300%",
   };
+  const style2 = {
+    fontFamily: "Comfortaa",
+    fontSize: "100%",
+  };
   return (
     <div>
       <Navbar className="" color="success" dark expand="md">
@@ -60,8 +64,8 @@ const NavigationBar = (props) => {
             */}
           </Nav>
         </Collapse>
-        <NavbarText className="mx-3 text-white">
-          A Community for Gardeners
+        <NavbarText className="mx-3 text-light">
+          <i>Where Gardeners Gather</i>
         </NavbarText>
       </Navbar>
     </div>
