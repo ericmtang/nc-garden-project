@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/nc-garden-project/static/css/main.feb073e9.chunk.css",
+    "main.js": "/nc-garden-project/static/js/main.72892c14.chunk.js",
+    "main.js.map": "/nc-garden-project/static/js/main.72892c14.chunk.js.map",
+    "runtime-main.js": "/nc-garden-project/static/js/runtime-main.3ce9dbe4.js",
+    "runtime-main.js.map": "/nc-garden-project/static/js/runtime-main.3ce9dbe4.js.map",
+    "static/css/2.acd75131.chunk.css": "/nc-garden-project/static/css/2.acd75131.chunk.css",
+    "static/js/2.c1bf5fdf.chunk.js": "/nc-garden-project/static/js/2.c1bf5fdf.chunk.js",
+    "static/js/2.c1bf5fdf.chunk.js.map": "/nc-garden-project/static/js/2.c1bf5fdf.chunk.js.map",
+    "static/js/3.cf97a52f.chunk.js": "/nc-garden-project/static/js/3.cf97a52f.chunk.js",
+    "static/js/3.cf97a52f.chunk.js.map": "/nc-garden-project/static/js/3.cf97a52f.chunk.js.map",
+    "index.html": "/nc-garden-project/index.html",
+    "static/css/2.acd75131.chunk.css.map": "/nc-garden-project/static/css/2.acd75131.chunk.css.map",
+    "static/css/main.feb073e9.chunk.css.map": "/nc-garden-project/static/css/main.feb073e9.chunk.css.map",
+    "static/js/2.c1bf5fdf.chunk.js.LICENSE.txt": "/nc-garden-project/static/js/2.c1bf5fdf.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3ce9dbe4.js",
+    "static/css/2.acd75131.chunk.css",
+    "static/js/2.c1bf5fdf.chunk.js",
+    "static/css/main.feb073e9.chunk.css",
+    "static/js/main.72892c14.chunk.js"
+  ]
+}
