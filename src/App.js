@@ -7,11 +7,19 @@ import Store from "./components/Store";
 import Classifieds from "./components/Classifieds";
 import Recipes from "./components/Recipes";
 import PlantDB from "./components/PlantDB";
+import background from "./img/bg1.jpg"
 import "./App.css";
 
 function App() {
   return (
-    <div>
+    <div style={{ 
+      backgroundImage: `url(${background})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      width: '100vw',
+      height: '100vh'
+    }}>
       <HashRouter>
         <NavigationBar />
         <div className="container mt-2" style={{ marginTop: 40 }}>
