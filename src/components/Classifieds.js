@@ -8,10 +8,8 @@ import {
   CardTitle,
 } from "reactstrap";
 import { CLASSIFIEDSDATA } from "../shared/classifiedsdata";
-import classdata from "../shared/classifiedsdata1.json";
 
 const Classifieds = (data) => {
-  const data1 = CLASSIFIEDSDATA;
   const style1 = {
     color: "white",
     textShadow:
@@ -26,15 +24,15 @@ const Classifieds = (data) => {
             <CardTitle style={style1}>{datas.name}</CardTitle>
           </CardImgOverlay>
           <CardBody>
-            <h5>Price: ${datas.price}</h5>
-            <p>{datas.description}</p>
+            <CardTitle>Price: ${datas.price}</CardTitle>
+            <CardText>{datas.description}</CardText>
           </CardBody>
         </Card>
       </div>
     );
   });
   return (
-    <div className="container" >
+    <div className="container">
       <div className="row" style={style1}>
         <h1 className="title is-1">This is the Classifieds Page</h1>
         <p>
@@ -52,7 +50,6 @@ const Classifieds = (data) => {
         </p>
       </div>
       <div className="row">{classifiedsList}</div>
-      <div className="row">--bottom div--</div>
     </div>
   );
 };
