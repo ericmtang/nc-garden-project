@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import Home from "./components/Home";
@@ -9,8 +9,11 @@ import Recipes from "./components/Recipes";
 import PlantDB from "./components/PlantDB";
 import background from "./img/bg1.jpg";
 import "./App.css";
+import { CLASSIFIEDSDATA } from './shared/classifiedsdata';
+
 
 function App() {
+  const [classdata, setClassdata] = useState(CLASSIFIEDSDATA);
   return (
     <div style={{ 
       backgroundImage: `url(${background})`,
@@ -27,7 +30,7 @@ function App() {
             <Route exact path="/" render={(props) => <Home />} />
             <Route path="/Blog" render={(props) => <Blog />} />
             <Route path="/Store" render={(props) => <Store />} />
-            <Route path="/Classifieds" render={(props) => <Classifieds />} />
+            <Route path="/Classifieds" render={(props) => <Classifieds data={classdata} />} />
             <Route path="/Recipes" render={(props) => <Recipes />} />
             <Route path="/PlantDB" render={(props) => <PlantDB />} />
             <Route path="/Home" render={(props) => <Home />} />
