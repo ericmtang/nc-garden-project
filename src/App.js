@@ -19,9 +19,9 @@ function App() {
       backgroundImage: `url(${background})`,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
+      backgroundAttachment: 'fixed',
       backgroundRepeat: 'no-repeat',
-      width: '100vw',
-      height: '100vh'
+      minHeight: '100%'
     }}>
       <HashRouter>
         <NavigationBar />
