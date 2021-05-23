@@ -1,0 +1,43 @@
+.store-GrowingFontSize {
+    font-size: 16px;
+    padding-top: 12px;
+
+}
+
+.store-GrowingIndoor {
+    background-color: #93B6B8;
+    color: white;
+    padding: 5px 5px;
+}
+
+
+.store-GrowingTransplant {
+    background-color: #0C4A6D;
+    color: white;
+    padding: 5px 5px;
+}
+
+.store-GrowingOutdoors {
+    background-color: #34935F;
+    color: white;
+    padding: 5px 5px;
+}
+
+.store-GrowingIndoorFall {
+    background-color: #EA791C;
+    color: white;
+    padding: 5px 5px;
+}
+
+.store-GrowingTransplantFall {
+    background-color: #25989E;
+    color: white;
+    padding: 5px 5px;
+}
+
+.store-GrowingOutdoorFall {
+    background-color: #F9A716;
+    color: white;
+    padding: 5px 5px;
+}
+

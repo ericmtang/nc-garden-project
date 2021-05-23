@@ -1,0 +1,14 @@
+.store-iFrameVideo {
+    /* width: 680px;
+    height: 600px; */
+    margin: 0 auto;
+    background-color: #777;
+    display: block;
+    border-style:none;
+}
+
+.store-VideoModal {
+    background-color: #777;
+   left: 0%;
+   top: 30%; 
+}

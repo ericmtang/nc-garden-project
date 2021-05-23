@@ -1,0 +1,20 @@
+.modal-backdrop {
+    background-color: rgba(0,0,0,.0001) !important;
+}
+
+.modal-backgroundColor {
+    background-color: #E8E8E8;
+    margin: auto;
+
+}
+
+.modal-align {
+    margin-top: 15px;
+}
+
+.modal-float-right {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 15px;
+}
+
