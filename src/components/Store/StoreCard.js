@@ -11,7 +11,7 @@ const StoreCard = (props) => {
     const cardData = storeCardData.map(cardData => {
         return (<div className="col-lg-3 col-md-4 col-sm-6 text-center">
             <div className="boxhover">
-                <a href="/nc-garden-project#/Store/Detail">
+                <a href="/nc-garden-project#/store/detail">
                 <img className="imageContainer" src={cardData.image}></img>
                 </a>
                 <div className="overlay" onClick={toggle}>Quick View</div>

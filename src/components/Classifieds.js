@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardImg,
@@ -6,38 +6,45 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardGroup
+  Modal, ModalHeader, ModalBody, Form, Input, Label, FormGroup
 } from "reactstrap";
 import { CLASSIFIEDSDATA } from "../shared/classifiedsdata";
+import "./Classifieds.css";
 
 const Classifieds = (data) => {
-  const style1 = {
-    color: "white",
-    textShadow:
-      "1px 1px 1px #000000, -1px -1px 1px #000000, -1px 1px 1px #000000, 1px -1px 1px #000000",
-  };
-  const style2 = {
-    width: "100%",
-    height: "200px",
-    objectFit: "cover"
-  };
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIndex, setModalIndex] = useState(0);
+  const toggleModal = () => {
+    setModalIsOpen(!modalIsOpen);
+  }
+  const setIndex = (i) => {
+    setModalIndex(i);
+  }
   const classifiedsList = CLASSIFIEDSDATA.map((datas) => {
     return (
-        <Card key={datas.id} style={{width:"200px", margin: "5px"}}>
-          <CardImg width="100%" style={style2} src={process.env.PUBLIC_URL + datas.image} alt-={datas.name} />
+      <React.Fragment >
+        <Card key={datas.id} style={{ width: "200px", margin: "5px" }} onClick={()=>{toggleModal(); setIndex(datas.id);}}>
+          <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt-={datas.name} />
           <CardImgOverlay>
-            <CardTitle style={style1}>{datas.name}</CardTitle>
+            <CardTitle className="txtshadow">{datas.name}</CardTitle>
           </CardImgOverlay>
           <CardBody>
             <CardTitle>Price: ${datas.price}</CardTitle>
-            <CardText >{datas.description}</CardText>
+            <CardText >Location: USA</CardText>
           </CardBody>
         </Card>
+        {/*
+        <Modal isOpen={modalIsOpen} toggle={toggleModal}>
+          <ModalHeader toggle={toggleModal}>{datas.name}</ModalHeader>
+          <ModalBody>{datas.description}</ModalBody>
+        </Modal>
+        */}
+      </React.Fragment>
     );
   });
   return (
-    <div >
-      <div className="row" style={style1}>
+    <React.Fragment >
+      <div className="row txtshadow">
         <h1 className="title is-1">This is the Classifieds Page</h1>
         <p>
           Donec et odio pellentesque diam volutpat commodo sed. Pulvinar etiam
@@ -52,7 +59,16 @@ const Classifieds = (data) => {
         {classifiedsList}
 
       </div>
-    </div>
+      <div>
+        <Modal isOpen={modalIsOpen} toggle={toggleModal}>
+          <ModalHeader toggle={toggleModal}>{CLASSIFIEDSDATA[modalIndex].name}</ModalHeader>
+          <ModalBody>
+            <img className="modal-img" src={process.env.PUBLIC_URL + CLASSIFIEDSDATA[modalIndex].image}></img>
+            {CLASSIFIEDSDATA[modalIndex].description}
+          </ModalBody>
+        </Modal>
+      </div>
+    </React.Fragment >
   );
 };
 

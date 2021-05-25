@@ -13,46 +13,19 @@ import "./App.css";
 
 function App() {
   return (
-    <div style={{ 
-      // backgroundImage: `url(${background})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundAttachment: 'fixed',
-      backgroundRepeat: 'no-repeat',
-      //minHeight: '100%',
-      minWidth: '500px'
-    }}>
+    <div>
       <HashRouter>
         <NavigationBar />
         <div className="container mt-2" style={{ marginTop: 40 }}>
           <Switch>
             <Route exact path="/" render={(props) => <Home />} />
-            <Route path="/Blog" render={(props) => <Blog />} />
-            <Route path="/Store/Detail" render={(props) => <StoreDetail />} />
-            <Route path="/Store" render={(props) => <Store />} />
-            <Route path="/Classifieds" render={(props) => <Classifieds />} />
-            <Route path="/Recipes" render={(props) => <Recipes />} />
-            <Route path="/PlantDB" render={(props) => <PlantDB />} />
-            <Route path="/Home" render={(props) => <Home />} />
-            {/*
-              <Home />
-            </Route> 
-            <Route path="/Blog">
-              <Blog />
-            </Route>
-            <Route path="/Store">
-              <Store />
-            </Route>
-            <Route path="/Classifieds">
-              <Classifieds />
-            </Route>
-            <Route path="/Recipes">
-              <Recipes />
-            </Route>
-            <Route path="/PlantDB">
-              <PlantDB />
-            </Route>
-            */}
+            <Route path="/blog" render={(props) => <Blog />} />
+            <Route path="/store/detail" render={(props) => <StoreDetail />} />
+            <Route path="/store" render={(props) => <Store />} />
+            <Route path="/classifieds" render={(props) => <Classifieds />} />
+            <Route path="/recipes" render={(props) => <Recipes />} />
+            <Route path="/plantdb" render={(props) => <PlantDB />} />
+            <Route path="/home" render={(props) => <Home />} />
           </Switch>
         </div>
       </HashRouter>
