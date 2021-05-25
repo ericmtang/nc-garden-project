@@ -1,0 +1,17 @@
+.store-CollapseBackground {
+    background-color: #e6eaea;
+    padding: 0px 5px;
+    color: #5c5143;
+    min-height: 63px;
+}
+
+.store-CollapseFloat {
+    font-size: 14px;
+    float: right;
+}
+
+.store-CollapseFont {
+    font-size: 17px;
+    font-weight: 600;
+}
+

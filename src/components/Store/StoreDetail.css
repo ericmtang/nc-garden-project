@@ -1,0 +1,32 @@
+.store-detailBackground {
+    background-color: #E8E8E8;
+    margin: auto;
+
+}
+
+.store-detailAlign {
+    margin-top: 15px;
+}
+
+.store-detailTextSize{
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a616f;
+}
+
+.store-detailFontColor {
+    color: #5a2c3e;
+}
+
+.store-detailTextColor {
+    color: #5c5143;
+}
+
+.store-detailVideoBackground {
+    background-color: #022645;
+    color: #fff;
+}
+
+.store-detailVideoText {
+    padding: 0 15px;
+}
