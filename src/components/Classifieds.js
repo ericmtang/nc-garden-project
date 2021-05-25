@@ -18,7 +18,7 @@ const Classifieds = (data) => {
   };
   const style2 = {
     width: "100%",
-    height: "20vw",
+    height: "200px",
     objectFit: "cover"
   };
   const classifiedsList = CLASSIFIEDSDATA.map((datas) => {
