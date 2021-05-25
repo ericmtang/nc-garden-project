@@ -6,6 +6,7 @@ import {
   CardText,
   CardBody,
   CardTitle,
+  CardGroup
 } from "reactstrap";
 import { CLASSIFIEDSDATA } from "../shared/classifiedsdata";
 
@@ -15,24 +16,27 @@ const Classifieds = (data) => {
     textShadow:
       "1px 1px 1px #000000, -1px -1px 1px #000000, -1px 1px 1px #000000, 1px -1px 1px #000000",
   };
+  const style2 = {
+    width: "100%",
+    height: "20vw",
+    objectFit: "cover"
+  };
   const classifiedsList = CLASSIFIEDSDATA.map((datas) => {
     return (
-      <div key={datas.id} className="col-md-5 m-1">
-        <Card>
-          <CardImg width="100%" src={datas.image} alt-={datas.name} />
+        <Card key={datas.id} style={{width:"200px", margin: "5px"}}>
+          <CardImg width="100%" style={style2} src={process.env.PUBLIC_URL + datas.image} alt-={datas.name} />
           <CardImgOverlay>
             <CardTitle style={style1}>{datas.name}</CardTitle>
           </CardImgOverlay>
           <CardBody>
             <CardTitle>Price: ${datas.price}</CardTitle>
-            <CardText>{datas.description}</CardText>
+            <CardText >{datas.description}</CardText>
           </CardBody>
         </Card>
-      </div>
     );
   });
   return (
-    <div className="container">
+    <div >
       <div className="row" style={style1}>
         <h1 className="title is-1">This is the Classifieds Page</h1>
         <p>
@@ -40,16 +44,14 @@ const Classifieds = (data) => {
           non quam lacus suspendisse faucibus interdum. Amet massa vitae tortor
           condimentum lacinia quis vel. Ullamcorper a lacus vestibulum sed arcu
           non. Urna condimentum mattis pellentesque id nibh tortor id aliquet
-          lectus. Egestas diam in arcu cursus euismod quis. Ut consequat semper
-          viverra nam libero justo. Quis enim lobortis scelerisque fermentum dui
-          faucibus. Laoreet suspendisse interdum consectetur libero id.
-          Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi
-          tristique senectus et. Diam ut venenatis tellus in metus vulputate eu
-          scelerisque felis. Dui vivamus arcu felis bibendum ut tristique et.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada.
+          lectus. Egestas diam in arcu cursus euismod quis.
         </p>
       </div>
-      <div className="row">{classifiedsList}</div>
+      <div className="flex-container">
+
+        {classifiedsList}
+
+      </div>
     </div>
   );
 };

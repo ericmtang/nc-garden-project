@@ -18,7 +18,8 @@ function App() {
       backgroundSize: 'cover',
       backgroundAttachment: 'fixed',
       backgroundRepeat: 'no-repeat',
-      minHeight: '100%'
+      //minHeight: '100%',
+      minWidth: '500px'
     }}>
       <HashRouter>
         <NavigationBar />

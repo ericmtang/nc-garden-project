@@ -1,8 +1,27 @@
 body {
   font-family: "Open Sans", sans-serif;
-  background: transparent;
+
+  background-image: url('./img/bg1.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
 }
 
-body > #root > div {
-  height: 100vh;
+/*
+body::before {
+  content: "";
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(255,255,255,0.75);
+}
+*/
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
 }
