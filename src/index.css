@@ -20,3 +20,22 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+/* HEADER */
+.headerWrapper {
+  height: 200px;
+}
+
+.navBarMenu {
+  position: absolute;
+  z-index: 1;
+}
+
+.headerLogo {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  top: -30px;
+  max-height: 100%;
+  max-width: 100%;
+}

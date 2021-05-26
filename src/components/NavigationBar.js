@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from '../img/logos/logo.png';
+//import vines from '../img/logos/vineVariousGreens.png';
 import {
   Collapse,
   Navbar,
@@ -8,6 +10,7 @@ import {
   Nav,
   NavLink,
   NavItem,
+  //Row,
   //UncontrolledDropdown,
   //DropdownToggle,
   //DropdownMenu,
@@ -22,6 +25,7 @@ const NavigationBar = (props) => {
     fontFamily: "Adelfa",
     fontSize: "300%",
   };
+  //const vines = NAVBARIMAGES[1]; 
   /*
   const style2 = {
     fontFamily: "Comfortaa",
@@ -29,14 +33,14 @@ const NavigationBar = (props) => {
   };
   */
   return (
-    <div>
-      <Navbar className="" color="success" dark expand="md">
-        <NavbarBrand className="mx-3" tag={Link} to="/home/">
-          <h1 style={style1}>GrowTogether</h1>
+    <div className="headerWrapper">
+      <Navbar color="success" dark expand="md">
+        <NavbarBrand className="row" tag={Link} to="/home/">
+        <img className="img-fluid headerLogo" src={logo} alt="Grow Together Logo" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar className="p-3">
-          <Nav className="mr-auto" navbar>
+          <Nav className="navBarMenu mr-auto" navbar>
             <NavItem>
               <NavLink tag={Link} to="/plantdb/">
                 Plant Database
@@ -62,6 +66,7 @@ const NavigationBar = (props) => {
                 Classifieds
               </NavLink>
             </NavItem>
+            
             {/*
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
