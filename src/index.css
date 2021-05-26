@@ -18,24 +18,24 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 /* HEADER */
 .headerWrapper {
-  height: 200px;
+  max-height: 10%;
 }
 
 .navBarMenu {
-  position: absolute;
-  z-index: 1;
+
 }
 
 .headerLogo {
   position: relative;
-  margin: 0px;
-  padding: 0px;
-  top: -30px;
-  max-height: 100%;
-  max-width: 100%;
+  width: 10%;
+  height: auto;
+  max-width: 30%;
+  max-height: auto;
+  background-size: contain;
 }

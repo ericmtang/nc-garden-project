@@ -21,22 +21,13 @@ import {
 const NavigationBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const style1 = {
-    fontFamily: "Adelfa",
-    fontSize: "300%",
-  };
-  //const vines = NAVBARIMAGES[1]; 
-  /*
-  const style2 = {
-    fontFamily: "Comfortaa",
-    fontSize: "100%",
-  };
-  */
+
+  //<img className="headerLogo" src={logo} alt="Grow Together Logo" />
   return (
     <div className="headerWrapper">
       <Navbar color="success" dark expand="md">
         <NavbarBrand className="row" tag={Link} to="/home/">
-        <img className="img-fluid headerLogo" src={logo} alt="Grow Together Logo" />
+          <img className="headerLogo" src={logo} alt="Grow Together Logo" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar className="p-3">
