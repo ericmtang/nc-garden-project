@@ -149,7 +149,186 @@ export const RECIPEDATA = [
         ],
         steps: [
             '1. Dress the tomatoes, onions, and cucumber with olive oil, red wine vinegar, salt, and pepper.',
-            '2. Let stand while you prepare dinner, about 20 minutes. Re-toss and serve salad with crusty bread for mopping up juices and oil.',
+            '2. Let stand while you prepare dinner, about 20 minutes. Re-toss and serve salad with crusty bread for mopping up juices and oil.'
+        ],
+        comments: []
+    },
+    {
+        id: 3,
+        name: 'Green Beans, Corn and Carrot Salad',
+        image: '/assets/images/recipe3.jpg',
+        author: 'Melissa Clark',
+        date: '',
+        thumbs: 5,
+        servings: 6,
+        description: 'This is a sturdy, appealing picnic recipe made from haricots verts, corn and carrots.',
+        ingredients: [
+            {
+                quantity: '3',
+                unit: 'cups',
+                item: 'corn'
+            },
+            {
+                quantity: '8',
+                unit: 'ounces',
+                item: 'carrots'
+            },
+            {
+                quantity: '16',
+                unit: 'ounces',
+                item: 'green beans'
+            },
+            {
+                quantity: '1',
+                unit: 'cup',
+                item: 'olive oil'
+            },
+            {
+                quantity: '2',
+                unit: 'tb',
+                item: 'vinegar'
+            },
+            {
+                quantity: '2',
+                unit: 'cloves',
+                item: 'garlic'
+            },
+            {
+                quantity: '1',
+                unit: 'tbs',
+                item: 'mustard'
+            },
+            {
+                quantity: '1/4',
+                unit: 'cup',
+                item: 'chives'
+            },
+            {
+                quantity: '',
+                unit: '',
+                item: 'salt & pepper to taste'
+            }
+        ],
+        steps: [
+            '1. In a small bowl, whisk together salt, vinegar, garlic and mustard. Whisking constantly, slowly whisk in oil until incorporated. Whisk in chives and pepper.',
+            '2. Bring a pot of salted water to a boil. Drop in haricots verts and cook until just tender, 2 to 3 minutes. Drain, cool and chop into bite-size pieces.',
+            '3. In a large bowl, toss together haricots verts, corn and carrot. Toss in dressing and season with salt and pepper.'
+        ],
+        comments: []
+    },
+    {
+        id: 4,
+        name: 'Carrot Zucchini Casserole',
+        image: '/assets/images/recipe4.jpg',
+        author: 'Edy Gourmet',
+        date: '',
+        thumbs: 5,
+        servings: 8,
+        description: 'Delightful, unusual flavor! A nice departure from casserole recipes that call for cream soups or cheese.',
+        ingredients: [
+            {
+                quantity: '3',
+                unit: 'medium',
+                item: 'zucchini'
+            },
+            {
+                quantity: '16',
+                unit: 'ounces',
+                item: 'carrots'
+            },
+            {
+                quantity: '2',
+                unit: 'tb',
+                item: 'onions'
+            },
+            {
+                quantity: '1/2',
+                unit: 'cup',
+                item: 'mayonnaise'
+            },
+            {
+                quantity: '1',
+                unit: 'tsp',
+                item: 'horseradish'
+            },
+            {
+                quantity: '1/2',
+                unit: 'cup',
+                item: 'bread crumbs'
+            },
+            {
+                quantity: '1/4',
+                unit: 'cup',
+                item: 'butter'
+            },
+            {
+                quantity: '',
+                unit: '',
+                item: 'salt & pepper to taste'
+            }
+        ],
+        steps: [
+            '1. Place carrots into a pot and cover with salted water; bring to a boil. Reduce heat to medium-low and simmer until just tender, about 15 minutes. Strain carrots out of the water with a slotted spoon. Add zucchini slices to the pot and simmer until tender, 2 to 3 minutes. Drain, reserving about 1/4 cup cooking liquid.',
+            '2. Stir reserved cooking liquid into mayonnaise, onion, horseradish, salt, and black pepper in a large bowl. Mix cooked vegetables into mayonnaise mixture until well blended; pour mixture into prepare baking dish.',
+            '3. Mix bread crumbs and melted butter in a small bowl; sprinkle over vegetables.',
+            '4. Bake in preheated oven until bread crumbs are lightly browned, about 15 minutes.'
+        ],
+        comments: []
+    },
+    {
+        id: 5,
+        name: 'Pan-Roasted Corn and Tomato Salad',
+        image: '/assets/images/recipe5.jpg',
+        author: 'Mark Bittman',
+        date: '',
+        thumbs: 5,
+        servings: 4,
+        description: 'My version here marries corn and tomatoes with chile, avocado, cilantro and lime. It is just plain good. ',
+        ingredients: [
+            {
+                quantity: '1',
+                unit: 'small',
+                item: 'onions'
+            },
+            {
+                quantity: '3',
+                unit: 'cups',
+                item: 'corn'
+            },
+            {
+                quantity: '2',
+                unit: 'cups',
+                item: 'tomatoes'
+            },
+            {
+                quantity: '1',
+                unit: 'medium',
+                item: 'limes'
+            },
+            {
+                quantity: '1',
+                unit: 'medium',
+                item: 'avocados'
+            },
+            {
+                quantity: '2',
+                unit: 'small',
+                item: 'chiles'
+            },
+            {
+                quantity: '1/2',
+                unit: 'cup',
+                item: 'cilantro'
+            },
+            {
+                quantity: '',
+                unit: '',
+                item: 'salt & pepper to taste'
+            }
+        ],
+        steps: [
+            '1. Cook bacon in a large skillet over medium-high heat until it begins to render fat; add onion and cook until just softened, about 5 minutes, then add corn. Continue cooking, stirring or shaking pan occasionally, until corn begins to brown a bit, about 5 more minutes; remove from heat and let cool for a few minutes. Drain fat if you wish.',
+            '2. Put lime juice in a large bowl and add bacon-corn mixture; then toss with remaining ingredients. Taste, adjust the seasoning and serve warm or at room temperature.'
         ],
         comments: []
     }

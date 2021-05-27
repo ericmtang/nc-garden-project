@@ -15,6 +15,7 @@ const Recipes = (data) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
   const [filtRec, setFiltRec] = useState([...RECIPEDATA]);
+  const [cSelected, setCSelected] = useState([]);
 
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -25,17 +26,30 @@ const Recipes = (data) => {
   }
 
   const filterRecipe = (list) => {
-    console.log("list: " + list);
+    //console.log("list: " + list);
     if (list.length) {
-      console.log("I got here!")
+      //console.log("I got here!")
       setFiltRec(RECIPEDATA.filter((recipe) => list.map((a) => recipe.ingredients.map((i) => i.item).includes(a)).reduce((sum, next) => sum && next, true)));
     } else {
       setFiltRec([...RECIPEDATA]);
     }
   }
 
+  const IngUsed = () => {
+    console.log("cSelected: "+cSelected+", length: "+cSelected.length);
+    if (cSelected.length > 0) {
+      return (
+        <span>
+          These recipes contain your selected ingredients [{cSelected.join(", ")}]:
+        </span>
+      );
+    } else {
+      return null;
+    }
+  };
+
   function IngChooser(props) {
-    const [cSelected, setCSelected] = useState([]);
+    //const [cSelected, setCSelected] = useState([]);
     const onCheckboxBtnClick = (selected) => {
       const index = cSelected.indexOf(selected);
       if (index < 0) {
@@ -47,30 +61,57 @@ const Recipes = (data) => {
     }
     return (
       <React.Fragment>
-        <ButtonGroup vertical style={{ backgroundColor: "white" }}>
-          <Button color="danger">What did you harvest today?</Button>
+        <Button color="danger">Select Ingredients From Your Garden:</Button>
+        <br /><br />
+        <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
+
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('onions')} active={cSelected.includes('onions')}>Onions</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('zucchini')} active={cSelected.includes('zucchini')}>Zucchini</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('tomatoes')} active={cSelected.includes('tomatoes')}>Tomatoes</Button>
+          <Button outline color="primary" onClick={() => onCheckboxBtnClick('corn')} active={cSelected.includes('corn')}>Corn</Button>
+          <Button outline color="primary" onClick={() => onCheckboxBtnClick('carrots')} active={cSelected.includes('carrots')}>Carrots</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('cucumbers')} active={cSelected.includes('cucumbers')}>Cucumbers</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('scallions')} active={cSelected.includes('scallions')}>Scallions</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('basil')} active={cSelected.includes('basil')}>Basil</Button>
-          <Button onClick={() => filterRecipe(cSelected)} color="success">What Am I Eating Today?</Button>
         </ButtonGroup>
+        <br /><br />
+        <Button onClick={() => filterRecipe(cSelected)} color="success">What Am I Eating Today?</Button>
       </React.Fragment>
     );
   };
 
-  const IngList = (props, index) => {
+  const IngList = (props) => {
     //const ingArr = props.ingredients;
-    console.log(props.ingrs);
-    return (props.ingrs.map(ing => <li key={index}>{ing.quantity} {ing.unit} {ing.item}</li>));
+    console.log("ingredients: "+props.ingrs.ingredients);
+    return (props.ingrs.map((ing, index) => <li key={index}>{ing.quantity} {ing.unit} {ing.item}</li>));
   };
 
   const StepList = (props) => {
-    //const ingArr = props.ingredients;
     console.log(props.steps);
     return (props.steps.map((step, index) => <li key={index}>{step}</li>));
+  };
+
+  const PopModal = (props) => {
+    return (
+      <Modal isOpen={modalIsOpen} toggle={toggleModal}>
+      <ModalHeader toggle={toggleModal}>{RECIPEDATA[modalIndex].name}</ModalHeader>
+      <ModalBody>
+        <img className="modal-img" src={process.env.PUBLIC_URL + RECIPEDATA[modalIndex].image}></img>
+        {RECIPEDATA[modalIndex].description}
+        <br /><br />
+        <u>Ingredients:</u>
+        <br />
+        <ul>
+          <IngList ingrs={RECIPEDATA[modalIndex].ingredients} />
+        </ul>
+        <u>Steps:</u>
+        <br />
+        <ul className="">
+          <StepList steps={RECIPEDATA[modalIndex].steps} />
+        </ul>
+      </ModalBody>
+    </Modal>
+    );
   };
 
   const recipeList = filtRec.map((datas) => {
@@ -83,7 +124,7 @@ const Recipes = (data) => {
           </CardImgOverlay>
           <CardBody>
             <CardTitle>Servings: {datas.servings}</CardTitle>
-            <CardText ></CardText>
+            <CardText >Credit: {datas.author}</CardText>
           </CardBody>
         </Card>
         {/*
@@ -99,7 +140,7 @@ const Recipes = (data) => {
     <React.Fragment >
       <Container fluid>
         <Row>
-          <Col md={2}>
+          <Col md={3} >
             <IngChooser />
           </Col>
           <Col md={9}>
@@ -110,32 +151,14 @@ const Recipes = (data) => {
               </p>
             </div>
             <div className="flex-container">
-
+              <p><IngUsed/></p>
               {recipeList}
-
             </div>
           </Col>
         </Row>
       </Container>
       <div>
-        <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-          <ModalHeader toggle={toggleModal}>{RECIPEDATA[modalIndex].name}</ModalHeader>
-          <ModalBody>
-            <img className="modal-img" src={process.env.PUBLIC_URL + RECIPEDATA[modalIndex].image}></img>
-            {RECIPEDATA[modalIndex].description}
-            <br /><br />
-            <u>Ingredients:</u>
-            <br />
-            <ul>
-              <IngList ingrs={RECIPEDATA[modalIndex].ingredients} />
-            </ul>
-            <u>Steps:</u>
-            <br />
-            <ul className="">
-              <StepList steps={RECIPEDATA[modalIndex].steps} />
-            </ul>
-          </ModalBody>
-        </Modal>
+        <PopModal />
       </div>
     </React.Fragment >
   );
