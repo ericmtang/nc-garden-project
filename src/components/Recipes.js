@@ -6,7 +6,7 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  Modal, ModalHeader, ModalBody, Form, Input, Label, FormGroup, Row, Col, Container, Button, ButtonGroup
+  Modal, ModalHeader, ModalBody, Row, Col, Container, Button, ButtonGroup
 } from "reactstrap";
 import { RECIPEDATA } from "../shared/recipedata";
 import "./Recipes.css";
@@ -64,7 +64,6 @@ const Recipes = (data) => {
         <Button color="danger">Select Ingredients From Your Garden:</Button>
         <br /><br />
         <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
-
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('onions')} active={cSelected.includes('onions')}>Onions</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('zucchini')} active={cSelected.includes('zucchini')}>Zucchini</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('tomatoes')} active={cSelected.includes('tomatoes')}>Tomatoes</Button>
@@ -75,7 +74,7 @@ const Recipes = (data) => {
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('basil')} active={cSelected.includes('basil')}>Basil</Button>
         </ButtonGroup>
         <br /><br />
-        <Button onClick={() => filterRecipe(cSelected)} color="success">What Am I Eating Today?</Button>
+        <Button onClick={() => filterRecipe(cSelected)} style={{cursor: "pointer"}} color="success">What Am I Eating Today?</Button>
       </React.Fragment>
     );
   };
@@ -117,7 +116,7 @@ const Recipes = (data) => {
   const recipeList = filtRec.map((datas) => {
     return (
       <React.Fragment >
-        <Card key={datas.id} style={{ width: "300px", margin: "5px" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
+        <Card key={datas.id} style={{ width: "300px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
           <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt-={datas.name} />
           <CardImgOverlay>
             <CardTitle className="txtshadow">{datas.name}</CardTitle>
@@ -127,12 +126,6 @@ const Recipes = (data) => {
             <CardText >Credit: {datas.author}</CardText>
           </CardBody>
         </Card>
-        {/*
-        <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-          <ModalHeader toggle={toggleModal}>{datas.name}</ModalHeader>
-          <ModalBody>{datas.description}</ModalBody>
-        </Modal>
-        */}
       </React.Fragment>
     );
   });
@@ -151,7 +144,6 @@ const Recipes = (data) => {
               </p>
             </div>
             <div className="flex-container">
-              <p><IngUsed/></p>
               {recipeList}
             </div>
           </Col>

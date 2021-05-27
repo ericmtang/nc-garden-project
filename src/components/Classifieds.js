@@ -23,7 +23,7 @@ const Classifieds = (data) => {
   const classifiedsList = CLASSIFIEDSDATA.map((datas) => {
     return (
       <React.Fragment >
-        <Card key={datas.id} style={{ width: "200px", margin: "5px" }} onClick={()=>{toggleModal(); setIndex(datas.id);}}>
+        <Card key={datas.id} style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={()=>{toggleModal(); setIndex(datas.id);}}>
           <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt-={datas.name} />
           <CardImgOverlay>
             <CardTitle className="txtshadow">{datas.name}</CardTitle>
@@ -33,12 +33,6 @@ const Classifieds = (data) => {
             <CardText >Location: USA</CardText>
           </CardBody>
         </Card>
-        {/*
-        <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-          <ModalHeader toggle={toggleModal}>{datas.name}</ModalHeader>
-          <ModalBody>{datas.description}</ModalBody>
-        </Modal>
-        */}
       </React.Fragment>
     );
   });
