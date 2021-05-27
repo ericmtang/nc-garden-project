@@ -61,12 +61,16 @@ const Recipes = (data) => {
     );
   };
 
-  const IngList = (props) => {
+  const IngList = (props, index) => {
     //const ingArr = props.ingredients;
-    console.log(props);
-    return (
-      <li></li>
-    );
+    console.log(props.ingrs);
+    return (props.ingrs.map(ing => <li key={index}>{ing.quantity} {ing.unit} {ing.item}</li>));
+  };
+
+  const StepList = (props) => {
+    //const ingArr = props.ingredients;
+    console.log(props.steps);
+    return (props.steps.map((step, index) => <li key={index}>{step}</li>));
   };
 
   const recipeList = filtRec.map((datas) => {
@@ -119,12 +123,17 @@ const Recipes = (data) => {
           <ModalBody>
             <img className="modal-img" src={process.env.PUBLIC_URL + RECIPEDATA[modalIndex].image}></img>
             {RECIPEDATA[modalIndex].description}
-            Ingredients: <br />
+            <br /><br />
+            <u>Ingredients:</u>
+            <br />
             <ul>
               <IngList ingrs={RECIPEDATA[modalIndex].ingredients} />
             </ul>
-            Steps: <br />
-            {RECIPEDATA[modalIndex].steps}
+            <u>Steps:</u>
+            <br />
+            <ul className="">
+              <StepList steps={RECIPEDATA[modalIndex].steps} />
+            </ul>
           </ModalBody>
         </Modal>
       </div>
