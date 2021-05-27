@@ -7,6 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
 @font-face {
   font-family: 'Adelfa';
   src: local('Adelfa'), url(./fonts/Adelfa-2ODaK.otf) format('opentype');
@@ -17,25 +19,13 @@ body {
   src: local('Comfortaa', url(./fonts/Comfortaa-Regular.ttf) format('truetype'));
 }
 
+@font-face {
+  font-family: 'Essence-Sans';
+  src: local('Essence-Sans', url(./fonts/Essence\ Sans.ttf) format('truetype'));
+}
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-/* HEADER */
-.headerWrapper {
-  max-height: 10%;
-}
-
-.navBarMenu {
-
-}
-
-.headerLogo {
-  position: relative;
-  width: 10%;
-  height: auto;
-  max-width: 30%;
-  max-height: auto;
-  background-size: contain;
 }

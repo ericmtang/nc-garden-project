@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import NavigationBar from "./components/NavigationBar";
+import Header from "./components/Header/Header";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
 import Store from "./components/Store/Store";
@@ -15,7 +15,7 @@ function App() {
   return (
     <div>
       <HashRouter>
-        <NavigationBar />
+        <Header />
         <div className="container mt-2" style={{ marginTop: 40 }}>
           <Switch>
             <Route exact path="/" render={(props) => <Home />} />

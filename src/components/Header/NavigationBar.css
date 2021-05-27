@@ -1,0 +1,26 @@
+/* HEADER */
+@font-face {
+    font-family: 'Essence Sans';
+    src: local('Essence Sans', url(../../fonts/Essence\ Sans.ttf) format('truetype'));
+    font-weight: bolder;
+}
+
+.headerWrapper {
+    max-height: 30%;
+  }
+  
+.headerLogo {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-width: 60%;
+    max-height: auto;
+    background-size: contain;
+    margin-left: 1rem;
+}
+
+.linkText {
+    font-size: 1.3rem;
+    font-family: 'Essence Sans';
+}
+
