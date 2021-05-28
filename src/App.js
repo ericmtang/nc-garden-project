@@ -2,13 +2,12 @@ import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./components/Home";
-import Blog from "./components/Blog";
+import Blog from "./components/Blog/Blog";
 import Store from "./components/Store/Store";
 import StoreDetail from "./components/Store/StoreDetail";
 import Classifieds from "./components/Classifieds";
 import Recipes from "./components/Recipes";
 import PlantDB from "./components/PlantDB";
-import background from "./img/bg1.jpg";
 import "./App.css";
 
 function App() {
