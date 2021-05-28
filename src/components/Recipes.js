@@ -61,8 +61,8 @@ const Recipes = (data) => {
     }
     return (
       <React.Fragment>
-        <Button color="danger">Select Ingredients From Your Garden:</Button>
-        <br /><br />
+        <span style={{display: "inline-block", borderRadius: "4px", color: "white", backgroundColor: "rgb(25, 135, 84)", padding: "4px"}}>Select Ingredients From Your Garden:</span>
+        <br />
         <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('onions')} active={cSelected.includes('onions')}>Onions</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('zucchini')} active={cSelected.includes('zucchini')}>Zucchini</Button>
@@ -74,7 +74,7 @@ const Recipes = (data) => {
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('basil')} active={cSelected.includes('basil')}>Basil</Button>
         </ButtonGroup>
         <br /><br />
-        <Button onClick={() => filterRecipe(cSelected)} style={{cursor: "pointer"}} color="success">What Am I Eating Today?</Button>
+        <Button onClick={() => filterRecipe(cSelected)} style={{cursor: "pointer", width: "100%"}} color="success">Tell Me What to Cook!</Button>
       </React.Fragment>
     );
   };
@@ -133,10 +133,10 @@ const Recipes = (data) => {
     <React.Fragment >
       <Container fluid>
         <Row>
-          <Col md={3} >
+          <Col md={2} >
             <IngChooser />
           </Col>
-          <Col md={9}>
+          <Col md={10}>
             <div className="row txtshadow">
               <h1 className="title is-1">Recipe Finder</h1>
               <p>
