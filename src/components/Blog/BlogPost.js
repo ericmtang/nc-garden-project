@@ -4,10 +4,10 @@ import BlogPara from './BlogPara';
 const BlogPost = ({blogData}) => {
 
     const post = blogData.map(post => {
-
+        console.log(post.img);
         return(
             <div>
-                <img src={post.img} alt={post.alt} />
+                <img src={process.env.PUBLIC_URL + post.img} alt={post.alt} />
                 <h1>{post.title}</h1>
                 <BlogPara body={post.body} />
             </div>
