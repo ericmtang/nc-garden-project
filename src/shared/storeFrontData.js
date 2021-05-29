@@ -1,5 +1,3 @@
-import React from 'react';
-
 const storeFrontData = [
     {name : "Beans"},
     {name : "Carrots"},

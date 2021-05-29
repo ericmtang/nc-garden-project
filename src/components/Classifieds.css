@@ -1,3 +1,7 @@
+.txtheader {
+  color: black;
+}
+
 .txtshadow {
   color: white;
   text-shadow: 1px 1px 1px #000000, -1px -1px 1px #000000, -1px 1px 1px #000000,
@@ -15,3 +19,8 @@
     height: 350px;
     object-fit: cover;
 }
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+} 

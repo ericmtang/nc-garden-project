@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
+import { Button, UncontrolledPopover, PopoverBody } from 'reactstrap';
 import './StorePopover.css'
 
 const Example = (props) => {

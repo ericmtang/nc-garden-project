@@ -1,5 +1,5 @@
 import React from 'react';
-import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
+import { UncontrolledCollapse, CardBody, Card } from 'reactstrap';
 import './StoreCollapse.css'
 
 const StoreCollapse = (props) => (

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
+import React from 'react';
+import { Button, Modal, ModalHeader, ModalBody, Input} from 'reactstrap';
 import StoreCarousel from './StoreCarousel';
 import './StoreModal.css';
 
 const ModalExample = (props) => {
   const {
-    buttonLabel,
     className
   } = props;
 
@@ -72,16 +71,16 @@ const ModalExample = (props) => {
                                 <p> Item#:54350A 1 Pkt. (25 seeds)</p>
                             </div>
                             <div className="col-4">
-                                <Input className="w-50" value="1"></Input>
+                                <Input className="w-50" placeholder="1"></Input>
                             </div>
                             <div className="col-4">
                                 <p>$6.95</p>
                             </div>
                         </div>
                         <div className="row">
-                            <a className="col">Add to Wish List</a>
+                            <a href="#/Store" className="col">Add to Wish List</a>
                             <div className="col">
-                                <Button className="modal-float-right" color="primary">Add To Cart</Button>
+                                <Button onClick={props.toggleChange} className="modal-float-right" color="primary">Add To Cart</Button>
                             </div>
                         </div>
                 </div>

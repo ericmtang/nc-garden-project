@@ -6,7 +6,7 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  Modal, ModalHeader, ModalBody, Form, Input, Label, FormGroup
+  Modal, ModalHeader, ModalBody
 } from "reactstrap";
 import { CLASSIFIEDSDATA } from "../shared/classifiedsdata";
 import "./Classifieds.css";
@@ -24,7 +24,7 @@ const Classifieds = (data) => {
     return (
       <React.Fragment >
         <Card key={datas.id} style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={()=>{toggleModal(); setIndex(datas.id);}}>
-          <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt-={datas.name} />
+          <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt={datas.name} />
           <CardImgOverlay>
             <CardTitle className="txtshadow">{datas.name}</CardTitle>
           </CardImgOverlay>
@@ -38,7 +38,7 @@ const Classifieds = (data) => {
   });
   return (
     <React.Fragment >
-      <div className="row txtshadow">
+      <div className="row txtheader">
         <h1 className="title is-1">This is the Classifieds Page</h1>
         <p>
           Donec et odio pellentesque diam volutpat commodo sed. Pulvinar etiam
@@ -57,7 +57,7 @@ const Classifieds = (data) => {
         <Modal isOpen={modalIsOpen} toggle={toggleModal}>
           <ModalHeader toggle={toggleModal}>{CLASSIFIEDSDATA[modalIndex].name}</ModalHeader>
           <ModalBody>
-            <img className="modal-img" src={process.env.PUBLIC_URL + CLASSIFIEDSDATA[modalIndex].image}></img>
+            <img className="modal-img" src={process.env.PUBLIC_URL + CLASSIFIEDSDATA[modalIndex].image} alt="item"></img>
             {CLASSIFIEDSDATA[modalIndex].description}
           </ModalBody>
         </Modal>

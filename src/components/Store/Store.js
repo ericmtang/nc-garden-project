@@ -1,6 +1,5 @@
 import React from "react";
 import storeFrontData from '../../shared/storeFrontData';
-import storeCardData from '../../shared/storeCardData';
 import StoreCard from './StoreCard';
 import './Store.css';
 

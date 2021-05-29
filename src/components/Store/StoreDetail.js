@@ -7,6 +7,7 @@ import StoreVideoModal from './StoreVideoModal';
 import StoreGrowingInfo from './StoreGrowingInfo';
 import StoreProductDetails from './StoreProductDetails';
 import StoreGrowingCalendar from './StoreGrowingCalendar';
+import StoreReview from './StoreReview';
 import './StoreDetail.css'
 
 const StoreDetail = () => {
@@ -24,7 +25,7 @@ const StoreDetail = () => {
                         <p className="mt-4 store-detailVideoText">Video</p>
                     </div>
                     <div className="row mt-3">
-                        <img className="col-5" src="https://img.youtube.com/vi/6qfI9giCAJY/mqdefault.jpg" onClick={toggle}></img>
+                        <img className="col-5" src="https://img.youtube.com/vi/6qfI9giCAJY/mqdefault.jpg" alt="" onClick={toggle}></img>
                         <p className="col store-detailTextColor">Garden Basic 101
                             <p className="store-detailTextColor">Learn how to grow a beautiful garden at home!</p>
                         </p>
@@ -63,7 +64,7 @@ const StoreDetail = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <a className="col">Add to Wish List</a>
+                            <a href="#/Store/Detail" className="col">Add to Wish List</a>
                             <div className="col">
                                 <Button size="lg" className="modal-float-right" color="primary">Add To Cart</Button>
                             </div>
@@ -104,7 +105,7 @@ const StoreDetail = () => {
                             <StoreCollapse id="toggle1" title="Growing Calendar for Grow (10)" body={<StoreGrowingCalendar />} lastFrost="Average Last Frost: 01/15-02/15" firstFrost="Average First Frost: 12/10-01/15"></StoreCollapse>
                             <StoreCollapse id="toggle2" title="Growing Information" body={<StoreGrowingInfo></StoreGrowingInfo>}></StoreCollapse>
                             <StoreCollapse id="toggle3" title="Product Details" body={<StoreProductDetails />} ></StoreCollapse>
-                            <StoreCollapse id="toggle4" title="Reviews" body="Hello this is in the body! # 4" ></StoreCollapse>
+                            <StoreCollapse id="toggle4" title="Reviews" body={<StoreReview />} ></StoreCollapse>
                         </div>
                         
                     </div>

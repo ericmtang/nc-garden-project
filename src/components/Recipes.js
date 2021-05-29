@@ -36,7 +36,7 @@ const Recipes = (data) => {
   }
 
   const IngUsed = () => {
-    console.log("cSelected: "+cSelected+", length: "+cSelected.length);
+    console.log("cSelected: " + cSelected + ", length: " + cSelected.length);
     if (cSelected.length > 0) {
       return (
         <span>
@@ -61,9 +61,10 @@ const Recipes = (data) => {
     }
     return (
       <React.Fragment>
-        <Button color="danger">Select Ingredients From Your Garden:</Button>
-        <br /><br />
+        {/* <span style={{ display: "inline-block", borderRadius: "4px", color: "white", backgroundColor: "rgb(25, 135, 84)", padding: "4px" }}>Select Ingredients From Your Garden:</span>
+        <br /> */}
         <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
+          <Button className="shadow-none" color="secondary">Choose Ingredients:</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('onions')} active={cSelected.includes('onions')}>Onions</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('zucchini')} active={cSelected.includes('zucchini')}>Zucchini</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('tomatoes')} active={cSelected.includes('tomatoes')}>Tomatoes</Button>
@@ -74,14 +75,17 @@ const Recipes = (data) => {
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('basil')} active={cSelected.includes('basil')}>Basil</Button>
         </ButtonGroup>
         <br /><br />
-        <Button onClick={() => filterRecipe(cSelected)} style={{cursor: "pointer"}} color="success">What Am I Eating Today?</Button>
+        <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
+          <Button onClick={() => filterRecipe(cSelected)} style={{ cursor: "pointer", width: "100%" }} color="success">Tell Me What to Cook!</Button>
+          <Button color="danger" onClick={() => { setFiltRec([...RECIPEDATA]); setCSelected([]); }}>Reset Filter</Button>
+        </ButtonGroup>
       </React.Fragment>
     );
   };
 
   const IngList = (props) => {
     //const ingArr = props.ingredients;
-    console.log("ingredients: "+props.ingrs.ingredients);
+    console.log("ingredients: " + props.ingrs.ingredients);
     return (props.ingrs.map((ing, index) => <li key={index}>{ing.quantity} {ing.unit} {ing.item}</li>));
   };
 
@@ -93,58 +97,73 @@ const Recipes = (data) => {
   const PopModal = (props) => {
     return (
       <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-      <ModalHeader toggle={toggleModal}>{RECIPEDATA[modalIndex].name}</ModalHeader>
-      <ModalBody>
-        <img className="modal-img" src={process.env.PUBLIC_URL + RECIPEDATA[modalIndex].image}></img>
-        {RECIPEDATA[modalIndex].description}
-        <br /><br />
-        <u>Ingredients:</u>
-        <br />
-        <ul>
-          <IngList ingrs={RECIPEDATA[modalIndex].ingredients} />
-        </ul>
-        <u>Steps:</u>
-        <br />
-        <ul className="">
-          <StepList steps={RECIPEDATA[modalIndex].steps} />
-        </ul>
-      </ModalBody>
-    </Modal>
+        <ModalHeader toggle={toggleModal} charCode="close">{RECIPEDATA[modalIndex].name}</ModalHeader>
+        <ModalBody>
+          <img className="modal-img" src={process.env.PUBLIC_URL + RECIPEDATA[modalIndex].image} alt="recipe"></img>
+          {RECIPEDATA[modalIndex].description}
+          <br /><br />
+          <u>Ingredients:</u>
+          <br />
+          <ul>
+            <IngList ingrs={RECIPEDATA[modalIndex].ingredients} />
+          </ul>
+          <u>Steps:</u>
+          <br />
+          <ul className="">
+            <StepList steps={RECIPEDATA[modalIndex].steps} />
+          </ul>
+        </ModalBody>
+      </Modal>
     );
   };
 
-  const recipeList = filtRec.map((datas) => {
-    return (
-      <React.Fragment >
-        <Card key={datas.id} style={{ width: "300px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
-          <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt-={datas.name} />
-          <CardImgOverlay>
-            <CardTitle className="txtshadow">{datas.name}</CardTitle>
-          </CardImgOverlay>
-          <CardBody>
-            <CardTitle>Servings: {datas.servings}</CardTitle>
-            <CardText >Credit: {datas.author}</CardText>
-          </CardBody>
-        </Card>
-      </React.Fragment>
-    );
-  });
+  const RecipeList = (props) => {
+    console.log(filtRec);
+    if (filtRec.length) {
+      return (
+        filtRec.map((recipe) => {
+          return (
+            <React.Fragment >
+              <Card outline color="secondary" key={recipe.id} style={{ width: "300px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(recipe.id); }}>
+                <CardImg className="cardimg" src={process.env.PUBLIC_URL + recipe.image} alt={recipe.name} />
+                <CardImgOverlay>
+                  <CardTitle tag="h5" className="txtshadow">{recipe.name}</CardTitle>
+                </CardImgOverlay>
+                <CardBody>
+                  <CardTitle>Servings: {recipe.servings}</CardTitle>
+                  <CardText >Credit: {recipe.author}</CardText>
+                </CardBody>
+              </Card>
+            </React.Fragment>
+          )
+        }));
+    } else {
+      return (
+        <Container>
+          <Row>
+            <h5 className="my-auto" style={{ color: "red" }}>Sorry, none of our recipes contain every selected ingredient!</h5>
+          </Row>
+          <Button color="danger" onClick={() => { setFiltRec([...RECIPEDATA]); setCSelected([]); }}>Reset Filter</Button>
+        </Container>
+      );
+    }
+  };
   return (
     <React.Fragment >
       <Container fluid>
         <Row>
-          <Col md={3} >
+          <Col md={2} >
             <IngChooser />
           </Col>
-          <Col md={9}>
-            <div className="row txtshadow">
+          <Col md={10}>
+            <div className="row txtheader">
               <h1 className="title is-1">Recipe Finder</h1>
               <p>
                 Select the ingredients you would like to use and hit the filter button to see which recipe uses all of those ingredients! Deselect all ingredients to see all recipes.
               </p>
-            </div>
-            <div className="flex-container">
-              {recipeList}
+              <div className="flex-container">
+                <RecipeList />
+              </div>
             </div>
           </Col>
         </Row>
