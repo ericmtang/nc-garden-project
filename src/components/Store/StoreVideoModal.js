@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React from 'react';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import './StoreVideoModal.css'
 
 const ModalVideo = (props) => {
-  const {
-    buttonLabel,
-    className
-  } = props;
 
 //   const [modal, setModal] = useState(false);
 
@@ -15,9 +11,9 @@ const ModalVideo = (props) => {
   return (
     <div className="col">
       {/* <Button color="danger" onClick={toggle}>{buttonLabel}</Button> */}
-      <Modal size="md" isOpen={props.modal} toggle={props.toggle} className={className} className="store-VideoModal">
+      <Modal size="md" isOpen={props.modal} toggle={props.toggle}  className="store-VideoModal">
         <ModalBody>
-            <iframe className="store-iFrameVideo" width="420" height="315" allow="fullscreen"
+            <iframe title="Garden 101" className="store-iFrameVideo" width="420" height="315" allow="fullscreen"
                 src="https://www.youtube.com/embed/Ov6cChHOoZQ">
             </iframe>
             
