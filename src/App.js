@@ -1,21 +1,20 @@
 import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import NavigationBar from "./components/NavigationBar";
+import Header from "./components/Header/Header";
 import Home from "./components/Home";
-import Blog from "./components/Blog";
+import Blog from "./components/Blog/Blog";
 import Store from "./components/Store/Store";
 import StoreDetail from "./components/Store/StoreDetail";
 import Classifieds from "./components/Classifieds";
 import Recipes from "./components/Recipes";
 import PlantDB from "./components/PlantDB";
-import background from "./img/bg1.jpg";
 import "./App.css";
 
 function App() {
   return (
     <div>
       <HashRouter>
-        <NavigationBar />
+        <Header />
         <div className="container mt-2" style={{ marginTop: 40 }}>
           <Switch>
             <Route exact path="/" render={(props) => <Home />} />
