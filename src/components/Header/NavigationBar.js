@@ -32,7 +32,7 @@ const NavigationBar = ({user}) => {
         </NavbarBrand>
         <div className="d-flex flex-md-column align-items-end">
           <div className="d-flex flex-md-column">
-            <Avatar className="ml-auto justify-content-sm-start" firstName={user.firstName} lastName={user.lastName} img={user.img} />
+            <Avatar className="text-light ml-3 justify-content-sm-start" firstName={user.firstName} lastName={user.lastName} img={user.img} right={false} />
           </div>
           <div className="d-flex flex-md-column justify-content-end linkText">
             <NavbarToggler onClick={toggle} />
