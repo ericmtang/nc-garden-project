@@ -6,7 +6,7 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  Modal, ModalHeader, ModalBody, Form, Input, Label, FormGroup
+  Modal, ModalHeader, ModalBody
 } from "reactstrap";
 import { CLASSIFIEDSDATA } from "../shared/classifiedsdata";
 import "./Classifieds.css";
