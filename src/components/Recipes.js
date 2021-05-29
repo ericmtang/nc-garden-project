@@ -61,9 +61,10 @@ const Recipes = (data) => {
     }
     return (
       <React.Fragment>
-        <span style={{ display: "inline-block", borderRadius: "4px", color: "white", backgroundColor: "rgb(25, 135, 84)", padding: "4px" }}>Select Ingredients From Your Garden:</span>
-        <br />
+        {/* <span style={{ display: "inline-block", borderRadius: "4px", color: "white", backgroundColor: "rgb(25, 135, 84)", padding: "4px" }}>Select Ingredients From Your Garden:</span>
+        <br /> */}
         <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
+          <Button className="shadow-none" color="secondary">Choose Ingredients:</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('onions')} active={cSelected.includes('onions')}>Onions</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('zucchini')} active={cSelected.includes('zucchini')}>Zucchini</Button>
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('tomatoes')} active={cSelected.includes('tomatoes')}>Tomatoes</Button>
@@ -74,7 +75,10 @@ const Recipes = (data) => {
           <Button outline color="primary" onClick={() => onCheckboxBtnClick('basil')} active={cSelected.includes('basil')}>Basil</Button>
         </ButtonGroup>
         <br /><br />
-        <Button onClick={() => filterRecipe(cSelected)} style={{ cursor: "pointer", width: "100%" }} color="success">Tell Me What to Cook!</Button>
+        <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
+          <Button onClick={() => filterRecipe(cSelected)} style={{ cursor: "pointer", width: "100%" }} color="success">Tell Me What to Cook!</Button>
+          <Button color="danger" onClick={() => { setFiltRec([...RECIPEDATA]); setCSelected([]); }}>Reset Filter</Button>
+        </ButtonGroup>
       </React.Fragment>
     );
   };
@@ -93,9 +97,9 @@ const Recipes = (data) => {
   const PopModal = (props) => {
     return (
       <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>{RECIPEDATA[modalIndex].name}</ModalHeader>
+        <ModalHeader toggle={toggleModal} charCode="close">{RECIPEDATA[modalIndex].name}</ModalHeader>
         <ModalBody>
-          <img className="modal-img" src={process.env.PUBLIC_URL + RECIPEDATA[modalIndex].image}></img>
+          <img className="modal-img" src={process.env.PUBLIC_URL + RECIPEDATA[modalIndex].image} alt="recipe"></img>
           {RECIPEDATA[modalIndex].description}
           <br /><br />
           <u>Ingredients:</u>
@@ -115,19 +119,19 @@ const Recipes = (data) => {
 
   const RecipeList = (props) => {
     console.log(filtRec);
-    if (filtRec.length > 0) {
+    if (filtRec.length) {
       return (
-        filtRec.map((datas) => {
+        filtRec.map((recipe) => {
           return (
             <React.Fragment >
-              <Card key={datas.id} style={{ width: "300px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
-                <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt-={datas.name} />
+              <Card outline color="secondary" key={recipe.id} style={{ width: "300px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(recipe.id); }}>
+                <CardImg className="cardimg" src={process.env.PUBLIC_URL + recipe.image} alt={recipe.name} />
                 <CardImgOverlay>
-                  <CardTitle className="txtshadow">{datas.name}</CardTitle>
+                  <CardTitle tag="h5" className="txtshadow">{recipe.name}</CardTitle>
                 </CardImgOverlay>
                 <CardBody>
-                  <CardTitle>Servings: {datas.servings}</CardTitle>
-                  <CardText >Credit: {datas.author}</CardText>
+                  <CardTitle>Servings: {recipe.servings}</CardTitle>
+                  <CardText >Credit: {recipe.author}</CardText>
                 </CardBody>
               </Card>
             </React.Fragment>
@@ -135,10 +139,12 @@ const Recipes = (data) => {
         }));
     } else {
       return (
-        <React.Fragment>
-          <h5 style={{color: "red"}}>Sorry, none of our recipes contain all of the ingredients selected!</h5>
-          <Button onClick={()=>{setFiltRec([...RECIPEDATA]);setCSelected([]);}}>Reset Filter</Button>
-        </React.Fragment>
+        <Container>
+          <Row>
+            <h5 className="my-auto" style={{ color: "red" }}>Sorry, none of our recipes contain every selected ingredient!</h5>
+          </Row>
+          <Button color="danger" onClick={() => { setFiltRec([...RECIPEDATA]); setCSelected([]); }}>Reset Filter</Button>
+        </Container>
       );
     }
   };
@@ -155,9 +161,9 @@ const Recipes = (data) => {
               <p>
                 Select the ingredients you would like to use and hit the filter button to see which recipe uses all of those ingredients! Deselect all ingredients to see all recipes.
               </p>
-            </div>
-            <div className="flex-container">
-              <RecipeList />
+              <div className="flex-container">
+                <RecipeList />
+              </div>
             </div>
           </Col>
         </Row>
