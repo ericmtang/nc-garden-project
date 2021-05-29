@@ -38,7 +38,7 @@ const Classifieds = (data) => {
   });
   return (
     <React.Fragment >
-      <div className="row txtshadow">
+      <div className="row txtheader">
         <h1 className="title is-1">This is the Classifieds Page</h1>
         <p>
           Donec et odio pellentesque diam volutpat commodo sed. Pulvinar etiam
