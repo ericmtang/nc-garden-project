@@ -1,4 +1,39 @@
 .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-  } 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-nopad {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.recipe-card {
+  width: 340px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: "FontAwesome";
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+}

@@ -40,7 +40,7 @@ const NavigationBar = ({user}) => {
               <Nav className="navBarMenu mr-auto" navbar>
                 <NavItem>
                   <NavLink tag={Link} to="/plantdb/">
-                    Plant Database
+                    PlantDB
                   </NavLink>
                 </NavItem>
                 <NavItem>
