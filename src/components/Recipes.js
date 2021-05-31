@@ -35,22 +35,9 @@ const Recipes = (data) => {
     }
   }
 
-  const IngUsed = () => {
-    console.log("cSelected: " + cSelected + ", length: " + cSelected.length);
-    if (cSelected.length > 0) {
-      return (
-        <span>
-          These recipes contain your selected ingredients [{cSelected.join(", ")}]:
-        </span>
-      );
-    } else {
-      return null;
-    }
-  };
-
   function IngChooser(props) {
     //const [cSelected, setCSelected] = useState([]);
-    const onCheckboxBtnClick = (selected) => {
+    const onFoodSelect = (selected) => {
       const index = cSelected.indexOf(selected);
       if (index < 0) {
         cSelected.push(selected);
@@ -58,27 +45,34 @@ const Recipes = (data) => {
         cSelected.splice(index, 1);
       }
       setCSelected([...cSelected]);
+      filterRecipe(cSelected);
     }
     return (
       <React.Fragment>
         {/* <span style={{ display: "inline-block", borderRadius: "4px", color: "white", backgroundColor: "rgb(25, 135, 84)", padding: "4px" }}>Select Ingredients From Your Garden:</span>
         <br /> */}
-        <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
+        <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%"}}>
           <Button className="shadow-none" color="secondary">Choose Ingredients:</Button>
-          <Button outline color="primary" onClick={() => onCheckboxBtnClick('onions')} active={cSelected.includes('onions')}>Onions</Button>
-          <Button outline color="primary" onClick={() => onCheckboxBtnClick('zucchini')} active={cSelected.includes('zucchini')}>Zucchini</Button>
-          <Button outline color="primary" onClick={() => onCheckboxBtnClick('tomatoes')} active={cSelected.includes('tomatoes')}>Tomatoes</Button>
-          <Button outline color="primary" onClick={() => onCheckboxBtnClick('corn')} active={cSelected.includes('corn')}>Corn</Button>
-          <Button outline color="primary" onClick={() => onCheckboxBtnClick('carrots')} active={cSelected.includes('carrots')}>Carrots</Button>
-          <Button outline color="primary" onClick={() => onCheckboxBtnClick('cucumbers')} active={cSelected.includes('cucumbers')}>Cucumbers</Button>
-          <Button outline color="primary" onClick={() => onCheckboxBtnClick('scallions')} active={cSelected.includes('scallions')}>Scallions</Button>
-          <Button outline color="primary" onClick={() => onCheckboxBtnClick('basil')} active={cSelected.includes('basil')}>Basil</Button>
+
+          <Button outline color="primary" onClick={() => onFoodSelect('zucchini')} active={cSelected.includes('zucchini')}>Zucchini</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('tomatoes')} active={cSelected.includes('tomatoes')}>Tomatoes</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('corn')} active={cSelected.includes('corn')}>Corn</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('carrots')} active={cSelected.includes('carrots')}>Carrots</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('cucumbers')} active={cSelected.includes('cucumbers')}>Cucumbers</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('avocados')} active={cSelected.includes('avocados')}>Avocados</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('onions')} active={cSelected.includes('onions')}>Onions</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('scallions')} active={cSelected.includes('scallions')}>Scallions</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('basil')} active={cSelected.includes('basil')}>Basil</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('garlic')} active={cSelected.includes('garlic')}>Garlic</Button>
         </ButtonGroup>
         <br /><br />
+        <Button style={{ width: "100%" }} color="danger" onClick={() => { setFiltRec([...RECIPEDATA]); setCSelected([]); }}>Reset Filter</Button>
+        {/* changed function, filter button unnecessary?
         <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%" }}>
           <Button onClick={() => filterRecipe(cSelected)} style={{ cursor: "pointer", width: "100%" }} color="success">Tell Me What to Cook!</Button>
           <Button color="danger" onClick={() => { setFiltRec([...RECIPEDATA]); setCSelected([]); }}>Reset Filter</Button>
         </ButtonGroup>
+        */}
       </React.Fragment>
     );
   };
@@ -109,9 +103,9 @@ const Recipes = (data) => {
           </ul>
           <u>Steps:</u>
           <br />
-          <ul className="">
+          <ol className="">
             <StepList steps={RECIPEDATA[modalIndex].steps} />
-          </ul>
+          </ol>
         </ModalBody>
       </Modal>
     );
@@ -122,16 +116,33 @@ const Recipes = (data) => {
     if (filtRec.length) {
       return (
         filtRec.map((recipe) => {
+          const rating = Math.round(recipe.rating / 5 * 100);
+          console.log(rating);
           return (
             <React.Fragment >
-              <Card outline color="secondary" key={recipe.id} style={{ width: "300px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(recipe.id); }}>
+              <Card outline color="secondary" key={recipe.id} className="recipe-card" onClick={() => { toggleModal(); setIndex(recipe.id); }}>
                 <CardImg className="cardimg" src={process.env.PUBLIC_URL + recipe.image} alt={recipe.name} />
                 <CardImgOverlay>
                   <CardTitle tag="h5" className="txtshadow">{recipe.name}</CardTitle>
                 </CardImgOverlay>
                 <CardBody>
-                  <CardTitle>Servings: {recipe.servings}</CardTitle>
-                  <CardText >Credit: {recipe.author}</CardText>
+                  <Container className="row-nopad">
+                    <Row className="">
+                      <Col className="pull-left">
+                        Servings: {recipe.servings}
+                      </Col>
+                      <Col className="pull-right text-end">
+                        <div className="stars-outer">
+                          <div className="stars-inner" style={{ width: `${rating}%` }}></div>
+                        </div>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        By: {recipe.author}
+                      </Col>
+                    </Row>
+                  </Container>
                 </CardBody>
               </Card>
             </React.Fragment>
@@ -141,9 +152,11 @@ const Recipes = (data) => {
       return (
         <Container>
           <Row>
-            <h5 className="my-auto" style={{ color: "red" }}>Sorry, none of our recipes contain every selected ingredient!</h5>
+            <h5 style={{ color: "red" }}>Sorry, none of our recipes contain every selected ingredient!</h5>
           </Row>
+          {/*
           <Button color="danger" onClick={() => { setFiltRec([...RECIPEDATA]); setCSelected([]); }}>Reset Filter</Button>
+          */}
         </Container>
       );
     }
@@ -157,9 +170,9 @@ const Recipes = (data) => {
           </Col>
           <Col md={10}>
             <div className="row txtheader">
-              <h1 className="title is-1">Recipe Finder</h1>
+              <h2 className="title is-1">Recipe Finder</h2>
               <p>
-                Select the ingredients you would like to use and hit the filter button to see which recipe uses all of those ingredients! Deselect all ingredients to see all recipes.
+                Select the ingredients from your garden that you would like to find a recipe for.
               </p>
               <div className="flex-container">
                 <RecipeList />
