@@ -1,40 +1,25 @@
-import React from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Home from "./components/Home";
-import Blog from "./components/Blog/Blog";
-import Store from "./components/Store/Store";
-import StoreDetail from "./components/Store/StoreDetail";
-import Classifieds from "./components/Classifieds";
-import Recipes from "./components/Recipes";
-import PlantDB from "./components/PlantDB";
+import React, { Component } from "react";
+import Main from './components/Main';
+import { HashRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/configureStore';
 import "./App.css";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-function App() {
-  return (
-    <div>
-      <HashRouter>
-        <Header />
-        <TransitionGroup>
-          <CSSTransition in={true} timeout={200} classNames="page">
-            {/*<div className="container mt-2" style={{ marginTop: 40 }}>*/}
-            <Switch>
-              <Route exact path="/" render={(props) => <Home />} />
-              <Route path="/blog" render={(props) => <Blog />} />
-              <Route path="/store/detail" render={(props) => <StoreDetail />} />
-              <Route path="/store" render={(props) => <Store />} />
-              <Route path="/classifieds" render={(props) => <Classifieds />} />
-              <Route path="/recipes" render={(props) => <Recipes />} />
-              <Route path="/plantdb" render={(props) => <PlantDB />} />
-              <Route path="/home" render={(props) => <Home />} />
-            </Switch>
-            {/*</div>*/}
-          </CSSTransition>
-        </TransitionGroup>
-      </HashRouter>
-    </div>
-  );
+const store = ConfigureStore();
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <HashRouter>
+          <div className="App">
+            <Main />
+          </div>
+        </HashRouter>
+      </Provider>
+    );
+  }
 }
 
 export default App;
