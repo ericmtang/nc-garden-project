@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'reactstrap';
 import StoreReviewModel from './StoreReviewModel';
 import StoreRating from './StoreRating';
-import storeReviewData from '../../shared/storeReviewData';
+import { STOREREVIEWDATA } from '../../shared/storeReviewData';
 import StoreChartBar from './StoreChartBar';
 import storeChartBarData from '../../shared/storeChartBarData';
 import './StoreReview.css';
@@ -14,7 +14,7 @@ const StoreReview = (props) => {
 
     const toggle = () => setModal(!modal);
 
-    const [storeReview, setStoreReview] = useState(storeReviewData);
+    const [storeReview, setStoreReview] = useState(STOREREVIEWDATA);
 
     const saveReviewDataHandler = (enterReviewData) => {
         const reviewData = {

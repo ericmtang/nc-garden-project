@@ -1,4 +1,4 @@
-const storeReviewData = [
+export const STOREREVIEWDATA = [
     {
         id: 1,
         star: "5 Star",
@@ -31,6 +31,3 @@ const storeReviewData = [
     
 
 ]
-
-
-export default storeReviewData;
