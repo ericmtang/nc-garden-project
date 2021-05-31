@@ -53,12 +53,14 @@ const Recipes = (data) => {
         <br /> */}
         <ButtonGroup vertical style={{ backgroundColor: "white", width: "100%"}}>
           <Button className="shadow-none" color="secondary">Choose Ingredients:</Button>
-          <Button outline color="primary" onClick={() => onFoodSelect('onions')} active={cSelected.includes('onions')}>Onions</Button>
+
           <Button outline color="primary" onClick={() => onFoodSelect('zucchini')} active={cSelected.includes('zucchini')}>Zucchini</Button>
           <Button outline color="primary" onClick={() => onFoodSelect('tomatoes')} active={cSelected.includes('tomatoes')}>Tomatoes</Button>
           <Button outline color="primary" onClick={() => onFoodSelect('corn')} active={cSelected.includes('corn')}>Corn</Button>
           <Button outline color="primary" onClick={() => onFoodSelect('carrots')} active={cSelected.includes('carrots')}>Carrots</Button>
           <Button outline color="primary" onClick={() => onFoodSelect('cucumbers')} active={cSelected.includes('cucumbers')}>Cucumbers</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('avocados')} active={cSelected.includes('avocados')}>Avocados</Button>
+          <Button outline color="primary" onClick={() => onFoodSelect('onions')} active={cSelected.includes('onions')}>Onions</Button>
           <Button outline color="primary" onClick={() => onFoodSelect('scallions')} active={cSelected.includes('scallions')}>Scallions</Button>
           <Button outline color="primary" onClick={() => onFoodSelect('basil')} active={cSelected.includes('basil')}>Basil</Button>
           <Button outline color="primary" onClick={() => onFoodSelect('garlic')} active={cSelected.includes('garlic')}>Garlic</Button>
