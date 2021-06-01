@@ -9,3 +9,14 @@ export const addReview = (star, title, text, name) => ({
         name: name
     }
 });
+
+export const postAd = (user, title, price, description, category) => ({
+    type: ActionTypes.POST_AD,
+    payload: {
+        user: user,
+        title: title,
+        price: price,
+        description: description,
+        category: category,
+    }
+});

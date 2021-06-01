@@ -10,14 +10,14 @@ import {
   Container, Row, Col,
   Button, Label, ButtonGroup
 } from "reactstrap";
-import { CLASSIFIEDSDATA } from "../shared/classifiedsdata";
 import "./Classifieds.css";
 import { Control, LocalForm, Errors } from 'react-redux-form'
 
-const Classifieds = (data) => {
+const Classifieds = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
+  const [sortType, setSortType] = useState({ type: 'id', dir: true });
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
   }
@@ -28,42 +28,56 @@ const Classifieds = (data) => {
     setModalIndex(i);
   }
   function handleSubmit(values) {
-    toggleModal(1);
-    //this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
+    toggleModal2();
+    props.postAd(values.user, values.title, values.price, values.description, values.category);
     console.log("Current state is: " + JSON.stringify(values));
     alert("Current state is: " + JSON.stringify(values));
+  }
+  function sortPriceLow() {
+    console.log('set price low');
+    setSortType({ type: 'price', dir: true });
+  }
+  function sortPriceHigh() {
+    console.log('set price high');
+    setSortType({ type: 'price', dir: false });
+  }
+  function sortDateLow() {
+    setSortType({ type: 'date', dir: true });
+  }
+  function sortDateHigh() {
+    setSortType({ type: 'date', dir: false });
   }
   function LeftNav(props) {
     const maxLength = len => val => !val || (val.length <= len);
     const minLength = len => val => val && (val.length >= len);
     return (
       <React.Fragment>
-        <Button outline onClick={toggleModal2} style={{width:"100%"}}><i className="fa fa-pencil fa-lg" /> Post New Listing</Button>
-        <br/><br/>
-        <ButtonGroup vertical style={{width:"100%"}}>
+        <Button outline onClick={toggleModal2} style={{ width: "100%" }}><i className="fa fa-pencil fa-lg" /> Post New Listing</Button>
+        <br /><br />
+        <ButtonGroup vertical style={{ width: "100%" }}>
           <Button>Sort</Button>
-          <Button>Newest</Button>
-          <Button>Oldest</Button>
-          <Button>Price High</Button>
-          <Button>Price Low</Button>
+          <Button onClick={sortDateHigh} outline>Newest</Button>
+          <Button onClick={sortDateLow} outline>Oldest</Button>
+          <Button onClick={sortPriceHigh} outline>Price High</Button>
+          <Button onClick={sortPriceLow} outline>Price Low</Button>
         </ButtonGroup>
-        <br/><br/>
-        <ButtonGroup vertical style={{width:"100%"}}>
+        <br /><br />
+        <ButtonGroup vertical style={{ width: "100%" }}>
           <Button>Filter</Button>
           <Button>Price High</Button>
           <Button>Price Low</Button>
           <Button>Category</Button>
         </ButtonGroup>
         <Modal isOpen={modalIsOpen2} toggle={toggleModal2}>
-          <ModalHeader toggle={toggleModal2}>Submit Comment</ModalHeader>
+          <ModalHeader toggle={toggleModal2}>Post New Classifieds Ad</ModalHeader>
           <ModalBody>
             <LocalForm onSubmit={values => handleSubmit(values)}>
-            <div className="form-group">
-                <Label htmlFor="author">Your Name</Label>
+              <div className="form-group">
+                <Label htmlFor="user">Your Name</Label>
                 <Control.text
-                  model=".author"
-                  id="author"
-                  name="author"
+                  model=".user"
+                  id="user"
+                  name="user"
                   className="form-control"
                   placeHolder="Your Name"
                   validators={{
@@ -72,7 +86,7 @@ const Classifieds = (data) => {
                   }} />
                 <Errors
                   className="text-danger"
-                  model=".author"
+                  model=".user"
                   show="touched"
                   component="div"
                   messages={{
@@ -85,12 +99,12 @@ const Classifieds = (data) => {
                 <Control.text model=".title" id="title" name="title" className="form-control" />
               </div>
               <div className="form-group">
-                <Label htmlFor="price">Price</Label>
-                <Control.text model=".price" id="price" name="price" className="form-control" />
+                <Label htmlFor="price">Price ($)</Label>
+                <Control.text type="number" model=".price" id="price" name="price" className="form-control" />
               </div>
               <div className="form-group">
-                <Label htmlFor="rating">Category</Label>
-                <Control.select model=".rating" id="rating" name="rating" className="form-control" defaultValue="Seed+Plants">
+                <Label htmlFor="category">Category</Label>
+                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seed+Plants">
                   <option>Seeds+Plants</option>
                   <option>Garden Tools</option>
                   <option>Garden Equipment</option>
@@ -99,8 +113,8 @@ const Classifieds = (data) => {
                 </Control.select>
               </div>
               <div className="form-group">
-                <Label htmlFor="text">Description</Label>
-                <Control.textarea model=".text" id="text" name="text" className="form-control" rows="6" />
+                <Label htmlFor="description">Description</Label>
+                <Control.textarea model=".description" id="description" name="description" className="form-control" rows="6" />
               </div>
               <div className="form-group">
                 <Button color="primary">Post</Button>
@@ -111,13 +125,15 @@ const Classifieds = (data) => {
       </React.Fragment>
     );
   }
-  const classifiedsList = CLASSIFIEDSDATA.map((datas) => {
+  const classifiedsList = props.classifiedsData.slice().sort(
+    (a, b) => sortType.dir ? a.[sortType.type] - b.[sortType.type] : b.[sortType.type] - a.[sortType.type]
+  ).map((datas) => {
     return (
       <React.Fragment >
         <Card key={datas.id} style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
-          <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt={datas.name} />
+          <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt={datas.title} />
           <CardImgOverlay>
-            <CardTitle className="txtshadow">{datas.name}</CardTitle>
+            <CardTitle className="txtshadow">{datas.title}</CardTitle>
           </CardImgOverlay>
           <CardBody>
             <CardTitle>Price: ${datas.price}</CardTitle>
@@ -151,10 +167,10 @@ const Classifieds = (data) => {
       </Container>
       <div>
         <Modal isOpen={modalIsOpen} toggle={toggleModal}>
-          <ModalHeader toggle={toggleModal}>{CLASSIFIEDSDATA[modalIndex].name}</ModalHeader>
+          <ModalHeader toggle={toggleModal}>{props.classifiedsData[modalIndex].title}</ModalHeader>
           <ModalBody>
-            <img className="modal-img" src={process.env.PUBLIC_URL + CLASSIFIEDSDATA[modalIndex].image} alt="item"></img>
-            {CLASSIFIEDSDATA[modalIndex].description}
+            <img className="modal-img" src={process.env.PUBLIC_URL + props.classifiedsData[modalIndex].image} alt="item"></img>
+            {props.classifiedsData[modalIndex].description}
           </ModalBody>
         </Modal>
       </div>
