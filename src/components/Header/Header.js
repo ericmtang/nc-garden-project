@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavigationBar from './NavigationBar';
 import avatarImg from './img/avatar.jpg';
+import { USERS } from '../../shared/users';
 
 class Header extends Component {
     constructor(props) {
@@ -18,9 +19,9 @@ class Header extends Component {
 
     render() {
         return (
-            <>
-                <NavigationBar user={this.state.user}/>
-            </>
+            <div>
+                <NavigationBar sticky user={this.state.user}/>
+            </div>
         )
     }
 }

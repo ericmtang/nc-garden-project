@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from './img/logo.png';
+import logo from '/img/logo/logoIcon.psd';
 import './NavigationBar.css';
-import Avatar from './Avatar';
+import textLogo from '/img/logo/logoText.psd'
+
 
 import {
   Collapse,
@@ -12,23 +13,23 @@ import {
   Nav,
   NavLink,
   NavItem,
-  //Row,
-  //UncontrolledDropdown,
-  //DropdownToggle,
-  //DropdownMenu,
-  //DropdownItem,
   NavbarText,
 } from "reactstrap";
+
 
 const NavigationBar = ({user}) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className="headerWrapper">
+    <div className="headerWrapper mx-auto">
+      <div class="jumbotron-fluid jumbotron">
+        <img src={textLogo} alt="Grow Together" />
+        <h4><i className="fa fa-pencil">Login</i></h4>
+      </div>
       <Navbar color="success" dark expand="md">
         <NavbarBrand tag={Link} to="/home/">
-          <img className="headerLogo" src={logo} alt="Grow Together Logo" />
+          <img src={logo} alt="Grow Together"/>
         </NavbarBrand>
         <div className="d-flex flex-md-column align-items-end">
           <div className="d-flex flex-md-column">
@@ -85,4 +86,5 @@ const NavigationBar = ({user}) => {
     </div>
   );
 };
+
 export default NavigationBar;
