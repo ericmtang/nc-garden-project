@@ -115,7 +115,7 @@ const Classifieds = (props) => {
                   id="user"
                   name="user"
                   className="form-control"
-                  placeHolder="Your Name"
+                  placeholder="Your Name"
                   validators={{
                     minLength: minLength(2),
                     maxLength: maxLength(15)
@@ -140,7 +140,7 @@ const Classifieds = (props) => {
               </div>
               <div className="form-group">
                 <Label htmlFor="category">Category</Label>
-                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seed+Plants" caret>
+                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seed+Plants">
                   <option>Seeds and Plants</option>
                   <option>Garden Tools</option>
                   <option>Garden Equipment</option>
@@ -165,9 +165,9 @@ const Classifieds = (props) => {
     filteredAds(sortedAds())
       .map((datas) => {
         return (
-          <React.Fragment >
+          <React.Fragment key={datas.id}>
             <Fade in out>
-              <Card key={datas.id} style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
+              <Card style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
                 <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt={datas.title} />
                 <CardImgOverlay>
                   <CardTitle className="txtshadow">{datas.title}</CardTitle>
@@ -183,7 +183,7 @@ const Classifieds = (props) => {
       });
   return (
     <React.Fragment >
-      <Container fluid>
+      <Container fluid className="mt-3">
         <Row>
           <Col md={2} >
             <LeftNav />
