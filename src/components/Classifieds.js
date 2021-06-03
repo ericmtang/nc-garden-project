@@ -95,7 +95,7 @@ const Classifieds = (props) => {
             Category
             </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Seeds+Plants' })}>Seeds and Plants</DropdownItem>
+            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Seeds and Plants' })}>Seeds and Plants</DropdownItem>
             <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Garden Tools' })}>Garden Tools</DropdownItem>
             <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Garden Equipment' })}>Garden Equipment</DropdownItem>
             <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Soil and Nutrients' })}>Soil and Nutrients</DropdownItem>
@@ -141,7 +141,7 @@ const Classifieds = (props) => {
               <div className="form-group">
                 <Label htmlFor="category">Category</Label>
                 <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seeds and Plants">
-                  <option>Seeds+Plants</option>
+                  <option>Seeds and Plants</option>
                   <option>Garden Tools</option>
                   <option>Garden Equipment</option>
                   <option>Soil and Nutrients</option>
