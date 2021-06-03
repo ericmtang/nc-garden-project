@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from './img/logo.png';
+import logoIcon from './logo/logoIcon.svg';
 import './NavigationBar.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import logoText from './logo/logoText.svg';
 import Avatar from './Avatar';
-
 import {
   Collapse,
   Navbar,
@@ -12,77 +13,70 @@ import {
   Nav,
   NavLink,
   NavItem,
-  //Row,
-  //UncontrolledDropdown,
-  //DropdownToggle,
-  //DropdownMenu,
-  //DropdownItem,
-  NavbarText,
+  Row,
+  Col
 } from "reactstrap";
 
-const NavigationBar = ({user}) => {
+
+const NavigationBar = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className="headerWrapper">
-      <Navbar color="success" dark expand="md">
-        <NavbarBrand tag={Link} to="/home/">
-          <img className="headerLogo" src={logo} alt="Grow Together Logo" />
-        </NavbarBrand>
-        <div className="d-flex flex-md-column align-items-end">
-          <div className="d-flex flex-md-column">
-            <Avatar className="text-light ml-3 justify-content-sm-start" firstName={user.firstName} lastName={user.lastName} img={user.img} right={false} />
-          </div>
-          <div className="d-flex flex-md-column justify-content-end linkText">
-            <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar className="p-3">
-              <Nav className="navBarMenu mr-auto" navbar>
-                <NavItem>
-                  <NavLink tag={Link} to="/plantdb/">
-                    PlantDB
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} to="/blog/">
-                    Blog
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} to="/recipes/">
-                    Recipes
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} to="/store/">
-                    Store
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} to="/classifieds/">
-                    Classifieds
-                  </NavLink>
-                </NavItem>
-                
-                {/*
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
-                    More
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem>About Us</DropdownItem>
-                    <DropdownItem>Donate</DropdownItem>
-                    <DropdownItem>Careers</DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-                */}
-              </Nav>
-            </Collapse>
-          </div>
-        </div>
-      </Navbar>
-
-    </div>
+    <Navbar className="container-fluid navWrapper" fixed="top" dark expand="md">
+      <Row>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar className="">
+          <Nav navbar>
+            <Col className="">
+              <NavbarBrand tag={Link} to="/home/">
+                <img src={logoText} alt="Grow Together" className="d-sm-none d-md-block logoText" />
+                <img src={logoIcon} alt="Grow Together" className="pt-3 d-none d-sm-block d-md-none logoIcon" />
+              </NavbarBrand>
+            </Col>
+            <Col className="navText">
+              <NavItem>
+                <NavLink tag={Link} to="/plantdb/">
+                  Plant DB
+              </NavLink>
+              </NavItem>
+            </Col>
+            <Col className="navText">
+              <NavItem>
+                <NavLink tag={Link} to="/blog/">
+                  Blog
+              </NavLink>
+              </NavItem>
+            </Col>
+            <Col className="navText">
+              <NavItem>
+                <NavLink tag={Link} to="/recipes/">
+                  Recipes
+              </NavLink>
+              </NavItem>
+            </Col>
+            <Col className="navText">
+              <NavItem>
+                <NavLink tag={Link} to="/store/">
+                  Store
+              </NavLink>
+              </NavItem>
+            </Col>
+            <Col className="navText">
+              <NavItem>
+                <NavLink tag={Link} to="/classifieds/">
+                  Classifieds
+              </NavLink>
+              </NavItem>
+            </Col>
+            <Col className="navText">
+              <Avatar firstName={user.firstName} lastName={user.lastName} img={user.img} header={true} className="avPic" />
+            </Col>
+          </Nav>
+        </Collapse>
+      </Row>
+    </Navbar>
   );
 };
+
 export default NavigationBar;

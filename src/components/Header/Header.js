@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import NavigationBar from './NavigationBar';
+import Jumbo from './Jumbo';
 import avatarImg from './img/avatar.jpg';
+import { USERS } from '../../shared/users';
 
 class Header extends Component {
     constructor(props) {
@@ -18,9 +20,10 @@ class Header extends Component {
 
     render() {
         return (
-            <>
+            <React.Fragment>
                 <NavigationBar user={this.state.user}/>
-            </>
+                <Jumbo user={this.state.user} />
+            </React.Fragment>
         )
     }
 }

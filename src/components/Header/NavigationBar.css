@@ -5,21 +5,45 @@
     font-weight: bolder;
 }
 
-.headerWrapper {
-    max-height: 30%;
-  }
-  
-.headerLogo {
-    position: relative;
-    width: 100%;
-    height: auto;
-    max-width: 60%;
-    max-height: auto;
-    background-size: contain;
-    margin-left: 1rem;
+.navWrapper {
+    background-color: #24BF93;
+    justify-content: center;
 }
+
+.navText {
+    text-align: center;
+    font-size: 1.20rem;
+    vertical-align: bottom;
+    font-family: 'Raleway', sans-serif;
+    font-stretch: expanded;
+}
+
+.logoWrap {
+    margin: 0;
+}
+
+.logoText {
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+    background-size: contain;
+}
+
+.logoIcon {
+    max-width: 10%;
+    max-height: auto;
+    object-fit: cover;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+};
 
 .linkText {
     font-size: 1.3rem;
     font-family: 'Essence Sans';
+}
+
+.avPic {
+    margin-left: auto;
+    margin-right: auto;
 }
