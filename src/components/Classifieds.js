@@ -8,16 +8,21 @@ import {
   CardTitle,
   Modal, ModalHeader, ModalBody,
   Container, Row, Col,
-  Button, Label, ButtonGroup
+  Button, Label, ButtonGroup, InputGroup, Input,
+  ButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle
 } from "reactstrap";
 import "./Classifieds.css";
-import { Control, LocalForm, Errors } from 'react-redux-form'
+import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Fade } from 'react-animation-components';
 
 const Classifieds = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
   const [sortType, setSortType] = useState({ type: 'id', dir: true });
+  const [dropdownOpen, setOpen] = useState(false);
+  const [filterType, setFilter] = useState({ low: null, high: null, category: '' });
+  const toggleDropdown = () => setOpen(!dropdownOpen);
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
   }
@@ -34,11 +39,9 @@ const Classifieds = (props) => {
     alert("Current state is: " + JSON.stringify(values));
   }
   function sortPriceLow() {
-    console.log('set price low');
     setSortType({ type: 'price', dir: true });
   }
   function sortPriceHigh() {
-    console.log('set price high');
     setSortType({ type: 'price', dir: false });
   }
   function sortDateLow() {
@@ -46,6 +49,26 @@ const Classifieds = (props) => {
   }
   function sortDateHigh() {
     setSortType({ type: 'date', dir: false });
+  }
+  function clearFilter() {
+    setFilter({ low: '', high: '', category: '' });
+  }
+  const sortedAds = () => {
+    console.log(sortType);
+    const sortedArr = [...props.classifiedsData];
+    console.log(sortedArr[0].[sortType.type]);
+    if (sortType.dir === 'date') {
+      return sortedArr.sort((a, b) => sortType.dir ? a.[sortType.type].getTime() - b.[sortType.type].getTime() : b.[sortType.type].getTime() - a.[sortType.type].getTime());
+    } else {
+      return sortedArr.sort((a, b) => sortType.dir ? a.[sortType.type] - b.[sortType.type] : b.[sortType.type] - a.[sortType.type]);
+    }
+  }
+  const filteredAds = (arr) => {
+    console.log("filter: " + Object.entries(filterType));
+    console.log("item cat: " + arr[arr.length - 1].category);
+    //console.log("items cats: "+arr.map(item=>item.id+item.category));
+    console.log(filterType.category === arr[arr.length - 1].category);
+    return arr.filter((a) => filterType.category ? filterType.category == a.category : true).filter((a) => filterType.high ? filterType.high >= a.price : true).filter((a) => filterType.low ? filterType.low <= a.price : true);
   }
   function LeftNav(props) {
     const maxLength = len => val => !val || (val.length <= len);
@@ -62,12 +85,25 @@ const Classifieds = (props) => {
           <Button onClick={sortPriceLow} outline>Price Low</Button>
         </ButtonGroup>
         <br /><br />
-        <ButtonGroup vertical style={{ width: "100%" }}>
-          <Button>Filter</Button>
-          <Button>Price High</Button>
-          <Button>Price Low</Button>
-          <Button>Category</Button>
-        </ButtonGroup>
+        <Button style={{ width: "100%" }}>Filter</Button>
+        <Input style={{ width: "100%" }} placeholder="$ Min Price" type="number" onBlur={(e) => setFilter({ ...filterType, low: e.target.value })} ></Input>
+        <Input style={{ width: "100%" }} placeholder="$ Max Price" type="number" onBlur={(e) => setFilter({ ...filterType, high: e.target.value })}></Input>
+        <Button style={{ width: "100%" }} outline onClick={() => setFilter({ ...filterType, high: 100 })}>Under 100</Button>
+        <Button style={{ width: "100%" }} outline onClick={() => setFilter({ ...filterType, low: 10 })}>Over 10</Button>
+        <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown} style={{ width: "100%" }}>
+          <DropdownToggle caret outline>
+            Category
+            </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Seeds and Plants' })}>Seeds and Plants</DropdownItem>
+            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Garden Tools' })}>Garden Tools</DropdownItem>
+            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Garden Equipment' })}>Garden Equipment</DropdownItem>
+            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Soil and Nutrients' })}>Soil and Nutrients</DropdownItem>
+            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Garden Fixtures' })}>Garden Fixtures</DropdownItem>
+          </DropdownMenu>
+        </ButtonDropdown>
+        <br /><br />
+        <Button style={{ width: "100%" }} onClick={() => clearFilter()}>Clear Filter</Button>
         <Modal isOpen={modalIsOpen2} toggle={toggleModal2}>
           <ModalHeader toggle={toggleModal2}>Post New Classifieds Ad</ModalHeader>
           <ModalBody>
@@ -104,11 +140,11 @@ const Classifieds = (props) => {
               </div>
               <div className="form-group">
                 <Label htmlFor="category">Category</Label>
-                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seed+Plants">
-                  <option>Seeds+Plants</option>
+                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seed+Plants" caret>
+                  <option>Seeds and Plants</option>
                   <option>Garden Tools</option>
                   <option>Garden Equipment</option>
-                  <option>Soil+Nutrients</option>
+                  <option>Soil and Nutrients</option>
                   <option>Garden Fixtures</option>
                 </Control.select>
               </div>
@@ -125,24 +161,26 @@ const Classifieds = (props) => {
       </React.Fragment>
     );
   }
-  const classifiedsList = props.classifiedsData.slice().sort(
-    (a, b) => sortType.dir ? a.[sortType.type] - b.[sortType.type] : b.[sortType.type] - a.[sortType.type]
-  ).map((datas) => {
-    return (
-      <React.Fragment >
-        <Card key={datas.id} style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
-          <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt={datas.title} />
-          <CardImgOverlay>
-            <CardTitle className="txtshadow">{datas.title}</CardTitle>
-          </CardImgOverlay>
-          <CardBody>
-            <CardTitle>Price: ${datas.price}</CardTitle>
-            <CardText >Location: USA</CardText>
-          </CardBody>
-        </Card>
-      </React.Fragment>
-    );
-  });
+  const classifiedsList =
+    filteredAds(sortedAds())
+      .map((datas) => {
+        return (
+          <React.Fragment >
+            <Fade in>
+              <Card key={datas.id} style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
+                <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt={datas.title} />
+                <CardImgOverlay>
+                  <CardTitle className="txtshadow">{datas.title}</CardTitle>
+                </CardImgOverlay>
+                <CardBody>
+                  <CardTitle>Price: ${datas.price}</CardTitle>
+                  <CardText >Location: USA</CardText>
+                </CardBody>
+              </Card>
+            </Fade>
+          </React.Fragment>
+        );
+      });
   return (
     <React.Fragment >
       <Container fluid>
@@ -158,9 +196,7 @@ const Classifieds = (props) => {
               </p>
             </div>
             <div className="flex-container">
-
               {classifiedsList}
-
             </div>
           </Col>
         </Row>
@@ -171,6 +207,7 @@ const Classifieds = (props) => {
           <ModalBody>
             <img className="modal-img" src={process.env.PUBLIC_URL + props.classifiedsData[modalIndex].image} alt="item"></img>
             {props.classifiedsData[modalIndex].description}
+            {props.classifiedsData[modalIndex].category}
           </ModalBody>
         </Modal>
       </div>
