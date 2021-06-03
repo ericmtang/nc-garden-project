@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavigationBar from './NavigationBar';
+import Jumbo from './Jumbo';
 import avatarImg from './img/avatar.jpg';
 import { USERS } from '../../shared/users';
 
@@ -19,9 +20,10 @@ class Header extends Component {
 
     render() {
         return (
-            <div>
-                <NavigationBar sticky user={this.state.user}/>
-            </div>
+            <React.Fragment>
+                <NavigationBar user={this.state.user}/>
+                <Jumbo user={this.state.user} />
+            </React.Fragment>
         )
     }
 }

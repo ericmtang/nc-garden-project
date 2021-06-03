@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { CLASSIFIEDSDATA } from "../shared/classifiedsdata";
 import "./Classifieds.css";
-import { Control, LocalForm, Errors } from 'react-redux-form'
+import { Control, LocalForm, Errors } from 'react-redux-form';
 
 const Classifieds = (data) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

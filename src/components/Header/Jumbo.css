@@ -1,0 +1,13 @@
+.jumbotron{
+    padding-top: 80px;
+    background-color: #FFF8DC;
+    color: #8B4513;
+    font-family: Raleway, sans-serif;
+    padding-bottom: 12px;
+}
+
+.tagline {
+    font-style: italic;
+    vertical-align: bottom;
+    float: left;
+}
