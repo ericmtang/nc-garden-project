@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BlogPost from './BlogPost';
+import BlogSummary from './BlogSummary';
 import { BLOGDATA } from '../../shared/blogData';
 
 class Blog extends Component {
@@ -13,7 +14,9 @@ class Blog extends Component {
 
   render () {
     return (
-      <BlogPost blogData={this.state.blogData} />
+      <div className="card-deck">
+        <BlogSummary blogData={this.state.blogData} />
+      </div>
     )
   }
 };

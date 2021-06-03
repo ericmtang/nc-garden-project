@@ -7,11 +7,26 @@ const BlogPost = ({blogData}) => {
     const post = blogData.map(post => {
         console.log(post.img);
         return(
-            <div>
-                <img src={process.env.PUBLIC_URL + post.img} alt={post.alt} />
-                <h1>{post.title}</h1>
-                <Avatar firstName={post.author.firstName} lastName={post.author.lastName} img={process.env.PUBLIC_URL + post.author.img} right={true} /> 
-                <BlogPara body={post.body} />
+            <div key={post.id} className="container m-5">
+                <div className="card">
+                    <img className="card-img-top" src={process.env.PUBLIC_URL + post.img} alt={post.alt} />
+                    <div className="card-body">
+                        <div className="card-title">
+                            <div className="row">
+                                {post.title}
+                            </div>
+                            <div className="row">
+                                <Avatar firstName={post.author.firstName} lastName={post.author.lastName} img={process.env.PUBLIC_URL +"/" + post.author.img} right={true} />
+                            </div>
+                        </div>
+                        <div className="card-text">
+                            <BlogPara body={post.body} />
+                        </div>
+                    </div>
+                </div>
+            
+                 
+                
             </div>
         );
     })

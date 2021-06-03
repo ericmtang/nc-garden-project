@@ -1,3 +1,4 @@
+import mask from './img/mask.svg';
 import './Avatar.css';
 
 const Avatar = ({firstName, lastName, img, header=false}) => {
@@ -6,14 +7,17 @@ const Avatar = ({firstName, lastName, img, header=false}) => {
     if (header !== false) {
         return (
             <span className="d-flex flex-row">
-                <img src={img} alt={fullName} className="avatar headerAv ml-3" />
+                <img src={img} alt={fullName} className="headerAv ml-3" />
             </span>
         );
     } else {
         return (
             <span className="d-flex flex-row">
                 <h5 className="align-self-center avatarText">{firstName} {lastName}</h5>
-                <img src={img} alt={fullName} className="avatar m-3" />
+                <div className="maskWrap">
+                    <img src={mask} alt="" className="mask" />
+                    <img src={img} alt={fullName} className="avatar" />
+                </div>
             </span>
         );
     }
