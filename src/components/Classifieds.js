@@ -64,8 +64,8 @@ const Classifieds = (props) => {
     }
   }
   const filteredAds = (arr) => {
-    console.log("filter: " + Object.entries(filterType));
-    console.log("item cat: " + arr[arr.length - 1].category);
+    console.log("filter: " + typeof filterType.category +" "+ filterType.category);
+    console.log("item cat: " + typeof arr[arr.length - 1].category +" "+ arr[arr.length - 1].category);
     //console.log("items cats: "+arr.map(item=>item.id+item.category));
     console.log(filterType.category === arr[arr.length - 1].category);
     return arr.filter((a) => filterType.category ? filterType.category === a.category : true).filter((a) => filterType.high ? filterType.high >= a.price : true).filter((a) => filterType.low ? filterType.low <= a.price : true);
@@ -86,9 +86,9 @@ const Classifieds = (props) => {
         </ButtonGroup>
         <br /><br />
         <Button style={{ width: "100%" }}>Filter</Button>
-        <Input style={{ width: "100%" }} placeholder="$ Min Price" type="number" onBlur={(e) => setFilter({ ...filterType, low: e.target.value })} ></Input>
+        <Input style={{ width: "100%" }} placeholder="$ Min Price" type="number" onBlur={(e) => {e.preventDefault(); setFilter({ ...filterType, low: e.target.value });}} ></Input>
         <Input style={{ width: "100%" }} placeholder="$ Max Price" type="number" onBlur={(e) => setFilter({ ...filterType, high: e.target.value })}></Input>
-        <Button style={{ width: "100%" }} outline onClick={() => setFilter({ ...filterType, high: 100 })}>Under 100</Button>
+        <Button style={{ width: "100%" }} outline onClick={(e) => {e.preventDefault(); setFilter({ ...filterType, high: 100 });}}>Under 100</Button>
         <Button style={{ width: "100%" }} outline onClick={() => setFilter({ ...filterType, low: 10 })}>Over 10</Button>
         <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown} style={{ width: "100%" }}>
           <DropdownToggle caret outline>
@@ -115,7 +115,7 @@ const Classifieds = (props) => {
                   id="user"
                   name="user"
                   className="form-control"
-                  placeHolder="Your Name"
+                  placeholder="Your Name"
                   validators={{
                     minLength: minLength(2),
                     maxLength: maxLength(15)
@@ -140,7 +140,7 @@ const Classifieds = (props) => {
               </div>
               <div className="form-group">
                 <Label htmlFor="category">Category</Label>
-                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seed+Plants" caret>
+                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seeds and Plants">
                   <option>Seeds and Plants</option>
                   <option>Garden Tools</option>
                   <option>Garden Equipment</option>
@@ -165,9 +165,9 @@ const Classifieds = (props) => {
     filteredAds(sortedAds())
       .map((datas) => {
         return (
-          <React.Fragment >
+          <React.Fragment key={datas.id}>
             <Fade in out>
-              <Card key={datas.id} style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
+              <Card style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
                 <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt={datas.title} />
                 <CardImgOverlay>
                   <CardTitle className="txtshadow">{datas.title}</CardTitle>
@@ -183,7 +183,7 @@ const Classifieds = (props) => {
       });
   return (
     <React.Fragment >
-      <Container fluid>
+      <Container fluid className="mt-3">
         <Row>
           <Col md={2} >
             <LeftNav />
