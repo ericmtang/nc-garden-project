@@ -57,8 +57,8 @@ const Classifieds = (props) => {
     console.log(sortType);
     const sortedArr = [...props.classifiedsData];
     console.log(sortedArr[0].[sortType.type]);
-    if (sortType.dir === 'date') {
-      return sortedArr.sort((a, b) => sortType.dir ? a.[sortType.type].getTime() - b.[sortType.type].getTime() : b.[sortType.type].getTime() - a.[sortType.type].getTime());
+    if (sortType.type === 'date') {
+      return sortedArr.sort((a, b) => sortType.dir ? a.[sortType.type].localeCompare(b.[sortType.type]) : b.[sortType.type].localeCompare(a.[sortType.type]));
     } else {
       return sortedArr.sort((a, b) => sortType.dir ? a.[sortType.type] - b.[sortType.type] : b.[sortType.type] - a.[sortType.type]);
     }
@@ -68,7 +68,7 @@ const Classifieds = (props) => {
     console.log("item cat: " + arr[arr.length - 1].category);
     //console.log("items cats: "+arr.map(item=>item.id+item.category));
     console.log(filterType.category === arr[arr.length - 1].category);
-    return arr.filter((a) => filterType.category ? filterType.category == a.category : true).filter((a) => filterType.high ? filterType.high >= a.price : true).filter((a) => filterType.low ? filterType.low <= a.price : true);
+    return arr.filter((a) => filterType.category ? filterType.category === a.category : true).filter((a) => filterType.high ? filterType.high >= a.price : true).filter((a) => filterType.low ? filterType.low <= a.price : true);
   }
   function LeftNav(props) {
     const maxLength = len => val => !val || (val.length <= len);
@@ -166,7 +166,7 @@ const Classifieds = (props) => {
       .map((datas) => {
         return (
           <React.Fragment >
-            <Fade in>
+            <Fade in out>
               <Card key={datas.id} style={{ width: "200px", margin: "5px", cursor: "pointer" }} onClick={() => { toggleModal(); setIndex(datas.id); }}>
                 <CardImg className="cardimg" src={process.env.PUBLIC_URL + datas.image} alt={datas.title} />
                 <CardImgOverlay>
@@ -174,7 +174,7 @@ const Classifieds = (props) => {
                 </CardImgOverlay>
                 <CardBody>
                   <CardTitle>Price: ${datas.price}</CardTitle>
-                  <CardText >Location: USA</CardText>
+                  <CardText >Posted: {datas.date.slice(0,10)}</CardText>
                 </CardBody>
               </Card>
             </Fade>
