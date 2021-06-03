@@ -31,7 +31,7 @@ const NavigationBar = ({ user }) => {
             <Col className="">
               <NavbarBrand tag={Link} to="/home/">
                 <img src={logoText} alt="Grow Together" className="d-sm-none d-md-block logoText" />
-                <img src={logoIcon} alt="Grow Together" className="d-none d-sm-block d-md-none logoIcon" />
+                <img src={logoIcon} alt="Grow Together" className="pt-3 d-none d-sm-block d-md-none logoIcon" />
               </NavbarBrand>
             </Col>
             <Col className="navText">
