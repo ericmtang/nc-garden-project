@@ -64,8 +64,8 @@ const Classifieds = (props) => {
     }
   }
   const filteredAds = (arr) => {
-    console.log("filter: " + Object.entries(filterType));
-    console.log("item cat: " + arr[arr.length - 1].category);
+    console.log("filter: " + typeof filterType.category +" "+ filterType.category);
+    console.log("item cat: " + typeof arr[arr.length - 1].category +" "+ arr[arr.length - 1].category);
     //console.log("items cats: "+arr.map(item=>item.id+item.category));
     console.log(filterType.category === arr[arr.length - 1].category);
     return arr.filter((a) => filterType.category ? filterType.category === a.category : true).filter((a) => filterType.high ? filterType.high >= a.price : true).filter((a) => filterType.low ? filterType.low <= a.price : true);
@@ -86,16 +86,16 @@ const Classifieds = (props) => {
         </ButtonGroup>
         <br /><br />
         <Button style={{ width: "100%" }}>Filter</Button>
-        <Input style={{ width: "100%" }} placeholder="$ Min Price" type="number" onBlur={(e) => setFilter({ ...filterType, low: e.target.value })} ></Input>
+        <Input style={{ width: "100%" }} placeholder="$ Min Price" type="number" onBlur={(e) => {e.preventDefault(); setFilter({ ...filterType, low: e.target.value });}} ></Input>
         <Input style={{ width: "100%" }} placeholder="$ Max Price" type="number" onBlur={(e) => setFilter({ ...filterType, high: e.target.value })}></Input>
-        <Button style={{ width: "100%" }} outline onClick={() => setFilter({ ...filterType, high: 100 })}>Under 100</Button>
+        <Button style={{ width: "100%" }} outline onClick={(e) => {e.preventDefault(); setFilter({ ...filterType, high: 100 });}}>Under 100</Button>
         <Button style={{ width: "100%" }} outline onClick={() => setFilter({ ...filterType, low: 10 })}>Over 10</Button>
         <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown} style={{ width: "100%" }}>
           <DropdownToggle caret outline>
             Category
             </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Seeds and Plants' })}>Seeds and Plants</DropdownItem>
+            <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Seeds+Plants' })}>Seeds and Plants</DropdownItem>
             <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Garden Tools' })}>Garden Tools</DropdownItem>
             <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Garden Equipment' })}>Garden Equipment</DropdownItem>
             <DropdownItem onClick={() => setFilter({ ...filterType, category: 'Soil and Nutrients' })}>Soil and Nutrients</DropdownItem>
@@ -140,8 +140,8 @@ const Classifieds = (props) => {
               </div>
               <div className="form-group">
                 <Label htmlFor="category">Category</Label>
-                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seed+Plants">
-                  <option>Seeds and Plants</option>
+                <Control.select model=".category" id="category" name="category" className="form-control" defaultValue="Seeds and Plants">
+                  <option>Seeds+Plants</option>
                   <option>Garden Tools</option>
                   <option>Garden Equipment</option>
                   <option>Soil and Nutrients</option>
