@@ -1,31 +1,32 @@
 {
   "files": {
-    "main.css": "/nc-garden-project/static/css/main.4b12b858.chunk.css",
-    "main.js": "/nc-garden-project/static/js/main.50fa325b.chunk.js",
-    "main.js.map": "/nc-garden-project/static/js/main.50fa325b.chunk.js.map",
-    "runtime-main.js": "/nc-garden-project/static/js/runtime-main.8c77cc6c.js",
-    "runtime-main.js.map": "/nc-garden-project/static/js/runtime-main.8c77cc6c.js.map",
+    "main.css": "/nc-garden-project/static/css/main.cd3c26ee.chunk.css",
+    "main.js": "/nc-garden-project/static/js/main.9f6cf6d6.chunk.js",
+    "main.js.map": "/nc-garden-project/static/js/main.9f6cf6d6.chunk.js.map",
+    "runtime-main.js": "/nc-garden-project/static/js/runtime-main.115694f2.js",
+    "runtime-main.js.map": "/nc-garden-project/static/js/runtime-main.115694f2.js.map",
     "static/css/2.acd75131.chunk.css": "/nc-garden-project/static/css/2.acd75131.chunk.css",
-    "static/js/2.fc885ffe.chunk.js": "/nc-garden-project/static/js/2.fc885ffe.chunk.js",
-    "static/js/2.fc885ffe.chunk.js.map": "/nc-garden-project/static/js/2.fc885ffe.chunk.js.map",
-    "static/js/3.b0a4fbef.chunk.js": "/nc-garden-project/static/js/3.b0a4fbef.chunk.js",
-    "static/js/3.b0a4fbef.chunk.js.map": "/nc-garden-project/static/js/3.b0a4fbef.chunk.js.map",
+    "static/js/2.b60bdcb4.chunk.js": "/nc-garden-project/static/js/2.b60bdcb4.chunk.js",
+    "static/js/2.b60bdcb4.chunk.js.map": "/nc-garden-project/static/js/2.b60bdcb4.chunk.js.map",
+    "static/js/3.90dfde5c.chunk.js": "/nc-garden-project/static/js/3.90dfde5c.chunk.js",
+    "static/js/3.90dfde5c.chunk.js.map": "/nc-garden-project/static/js/3.90dfde5c.chunk.js.map",
     "index.html": "/nc-garden-project/index.html",
     "static/css/2.acd75131.chunk.css.map": "/nc-garden-project/static/css/2.acd75131.chunk.css.map",
-    "static/css/main.4b12b858.chunk.css.map": "/nc-garden-project/static/css/main.4b12b858.chunk.css.map",
-    "static/js/2.fc885ffe.chunk.js.LICENSE.txt": "/nc-garden-project/static/js/2.fc885ffe.chunk.js.LICENSE.txt",
+    "static/css/main.cd3c26ee.chunk.css.map": "/nc-garden-project/static/css/main.cd3c26ee.chunk.css.map",
+    "static/js/2.b60bdcb4.chunk.js.LICENSE.txt": "/nc-garden-project/static/js/2.b60bdcb4.chunk.js.LICENSE.txt",
     "static/media/index.css": "/nc-garden-project/static/media/Adelfa-2ODaK.4a478f51.otf",
     "static/media/Avatar.css": "/nc-garden-project/static/media/Comfortaa-Regular.886fcced.ttf",
     "static/media/NavigationBar.css": "/nc-garden-project/static/media/Essence Sans.210a410d.ttf",
     "static/media/avatar.93a8f797.jpg": "/nc-garden-project/static/media/avatar.93a8f797.jpg",
     "static/media/logoIcon.0cdae5f8.svg": "/nc-garden-project/static/media/logoIcon.0cdae5f8.svg",
-    "static/media/logoText.5f219cf4.svg": "/nc-garden-project/static/media/logoText.5f219cf4.svg"
+    "static/media/logoText.5f219cf4.svg": "/nc-garden-project/static/media/logoText.5f219cf4.svg",
+    "static/media/mask.cf1ffec2.svg": "/nc-garden-project/static/media/mask.cf1ffec2.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8c77cc6c.js",
+    "static/js/runtime-main.115694f2.js",
     "static/css/2.acd75131.chunk.css",
-    "static/js/2.fc885ffe.chunk.js",
-    "static/css/main.4b12b858.chunk.css",
-    "static/js/main.50fa325b.chunk.js"
+    "static/js/2.b60bdcb4.chunk.js",
+    "static/css/main.cd3c26ee.chunk.css",
+    "static/js/main.9f6cf6d6.chunk.js"
   ]
 }
