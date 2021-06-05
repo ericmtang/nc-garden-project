@@ -84,17 +84,15 @@ const BlogSummary = ({blogData}) => {
             RowWrapper.push(
                 <div className="container-fluid">
                     <div className="row">
-                        <CardDeck className="groupDiv">
-                        <div className="col-md-4 cardDiv">
+                        <div className="col col-md-4">
                             {aPost[i]}
                         </div>
-                        <div className="col-md-4 cardDiv">
+                        <div className="col col-md-4">
                             {aPost[j]}
                         </div>
-                        <div className="col-md-4 cardDiv">
+                        <div className="col col-md-4">
                             {aPost[k]}
                         </div>
-                        </CardDeck>
                     </div>
                 </div>
             );

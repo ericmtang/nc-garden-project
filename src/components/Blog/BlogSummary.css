@@ -1,11 +1,5 @@
-.cardDiv {
-    height: 100%;
-    display: flex;
-}
-
-.lastResort{
-    height: inherit;
-    display: flex;
+.summaryCard {
+    min-width: 18rem;
 }
 
 .groupDiv {
@@ -13,9 +7,6 @@
     height: 100%;
 }
 
-.bodyPart {
-    height: max-content;
-}
 
 .summaryCard:hover {
     box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253) !important;
