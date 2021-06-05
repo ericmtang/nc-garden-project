@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Avatar from '../Header/Avatar';
 import './BlogSummary.css';
 import {
-    Card, CardImg,  CardTitle, CardText, CardBody, Row
+    Card, CardImg,  CardTitle, CardText, CardBody, Row, CardFooter, CardDeck
 } from 'reactstrap';
 
 function RenderBlogPost({blogPost}) {
@@ -14,7 +14,7 @@ function RenderBlogPost({blogPost}) {
         <Card key={blogPost.id} className="rounded summaryCard mt-5 mx-2">
             <Link to={`/blog/${blogPost.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <CardImg className="summaryImg" src={process.env.PUBLIC_URL + blogPost.img} alt={blogPost.alt} />
-                <CardBody>
+                <CardBody className="bodyPart">
                     <Row>
                         <CardTitle>
                             <h5>{blogPost.title}</h5>
@@ -27,14 +27,14 @@ function RenderBlogPost({blogPost}) {
                         {stringPara}
                     </CardText>
                     <div className="container separator-line"></div>
-                    <Row>
-                        <span className="social1">
+                    <CardFooter className="blogFoot">
+                        <span className="social1 mt-3">
                             <i className="fa fa-reply social reply"></i>
                             <i className="fa fa-comment-o social comment"></i>
                             <i className="fa fa-heart social heart"></i>
                             <i className="fa fa-share-alt social share"></i>
                         </span>
-                    </Row>
+                    </CardFooter>
                 </CardBody>
             </Link>
         </Card>
@@ -47,7 +47,7 @@ const BlogSummary = ({blogData}) => {
         console.log(post.img);
         console.log(post.comments)
         return (
-            <div key={post.id}>
+            <div key={post.id} className="lastResort">
                 <RenderBlogPost blogPost={post} />
             </div>
         );
@@ -84,15 +84,17 @@ const BlogSummary = ({blogData}) => {
             RowWrapper.push(
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-4">
+                        <CardDeck className="groupDiv">
+                        <div className="col-md-4 cardDiv">
                             {aPost[i]}
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-4 cardDiv">
                             {aPost[j]}
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-4 cardDiv">
                             {aPost[k]}
                         </div>
+                        </CardDeck>
                     </div>
                 </div>
             );

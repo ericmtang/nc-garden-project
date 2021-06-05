@@ -1,5 +1,20 @@
-.summaryCard {
-    border-radius: 30%;
+.cardDiv {
+    height: 100%;
+    display: flex;
+}
+
+.lastResort{
+    height: inherit;
+    display: flex;
+}
+
+.groupDiv {
+    display: flex;
+    height: 100%;
+}
+
+.bodyPart {
+    height: max-content;
 }
 
 .summaryCard:hover {
@@ -32,8 +47,19 @@
     color: blue;
 }
 
-
 .largePic {
     width: 100%;
     max-height: auto;
+}
+
+.blogTitle {
+    font-size: 3rem;
+}
+
+.blogPara {
+    font-size: 1.5rem;
+}
+
+.blogFoot {
+    background-color: inherit;
 }

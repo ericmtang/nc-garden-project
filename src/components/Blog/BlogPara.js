@@ -9,7 +9,7 @@ const BlogPara = ({body}) => {
     })
 
     return (
-        <div>
+        <div className="blogPara">
             {blogParas}
         </div>
     )
