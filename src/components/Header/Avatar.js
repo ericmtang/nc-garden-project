@@ -18,6 +18,7 @@ const Avatar = ({firstName, lastName, img, header=false}) => {
                     <img src={mask} alt="" className="mask" />
                     <img src={img} alt={fullName} className="avatar" />
                 </div>
+                
             </span>
         );
     }

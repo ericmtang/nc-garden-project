@@ -1,30 +1,27 @@
 import React from 'react';
-import BlogPara from './BlogPara';
+import { Link } from 'react-router-dom';
 import Avatar from '../Header/Avatar';
 import './BlogSummary.css';
 import {
-    Card, Col, Button, CardImg, CardDeck, CardTitle, CardText, CardGroup, CardColumns, CardSubtitle, CardBody, Row
+    Card, CardImg,  CardTitle, CardText, CardBody, Row
 } from 'reactstrap';
 
-//TODO: Translate into react cards
+function RenderBlogPost({blogPost}) {
 
-const BlogSummary = ({ blogData }) => {
-
-    const post = blogData.map(post => {
-        console.log(post.img);
-        let stringPara = post.body[0];
-        stringPara = stringPara.substr(0, 300) + "...";
-        return (
-            <Card key={post.id} className="rounded summaryCard mt-5 mx-2">
-                <CardImg className="summaryImg" src={process.env.PUBLIC_URL + post.img} alt={post.alt} />
+    let stringPara = blogPost.body[0];
+    stringPara = stringPara.substr(0, 300) + "..."
+    return (
+        <Card key={blogPost.id} className="rounded summaryCard mt-5 mx-2">
+            <Link to={`/blog/${blogPost.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <CardImg className="summaryImg" src={process.env.PUBLIC_URL + blogPost.img} alt={blogPost.alt} />
                 <CardBody>
                     <Row>
                         <CardTitle>
-                            <h5>{post.title}</h5>
+                            <h5>{blogPost.title}</h5>
                         </CardTitle>
                     </Row>
-                    <Row className="mx-1">
-                        <Avatar firstName={post.author.firstName} lastName={post.author.lastName} img={process.env.PUBLIC_URL + "/" + post.author.img} right={true} />
+                    <Row className="">
+                        <Avatar firstName={blogPost.author.firstName} lastName={blogPost.author.lastName} img={process.env.PUBLIC_URL + "/" + blogPost.author.img} />
                     </Row>
                     <CardText>
                         {stringPara}
@@ -32,19 +29,49 @@ const BlogSummary = ({ blogData }) => {
                     <div className="container separator-line"></div>
                     <Row>
                         <span className="social1">
-                            <i className="fa fa-reply social"></i>
-                            <i className="fa fa-comment-o social"></i>
-                            <i className="fa fa-heart social"></i>
-                            <i className="fa fa-share-alt social"></i>
+                            <i className="fa fa-reply social reply"></i>
+                            <i className="fa fa-comment-o social comment"></i>
+                            <i className="fa fa-heart social heart"></i>
+                            <i className="fa fa-share-alt social share"></i>
                         </span>
                     </Row>
                 </CardBody>
-            </Card>
+            </Link>
+        </Card>
+    )
+}
+
+const BlogSummary = ({blogData}) => {
+
+    const post = blogData.map(post => {
+        console.log(post.img);
+        console.log(post.comments)
+        return (
+            <div key={post.id}>
+                <RenderBlogPost blogPost={post} />
+            </div>
         );
     })
 
-    // Built in Reactstrap does not play well with CardGroups
-    // Wrote this to compensate
+    function RenderComments({blogComments, blogId}) {
+        let comments = blogComments;
+        if (comments !== undefined && comments.length > 0) {
+            comments = comments.filter(comment => comment.postID == blogId)
+            return (
+                <div>
+                    <h1>Comments</h1>
+                    {comments.map(comment => {
+                        return(
+                            <div key={comment.id}>
+                                <h1>{comment.text}</h1>
+                            </div>
+                        )
+                    })}
+                </div>
+            )
+        }
+    }
+
 
     const CardRow = ({aPost}) => {
         let i = 0;
@@ -79,7 +106,7 @@ const BlogSummary = ({ blogData }) => {
 
     return (
         <React.Fragment>
-            <CardRow aPost = {post} />
+            <CardRow aPost={post} />
         </React.Fragment>
     )
 }
