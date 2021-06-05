@@ -11,7 +11,7 @@ import PlantDB from './PlantDB';
 import StoreDetail from "./Store/StoreDetail";
 import { HashRouter, Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addReview } from '../redux/ActionCreator';
+import { addReview, postAd } from '../redux/ActionCreator';
 
 const mapStateToProps = state => {
     return {
@@ -22,7 +22,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addReview: (star, title, text, name) => (addReview(star, title, text, name))
+    addReview: (star, title, text, name) => (addReview(star, title, text, name)),
+    postAd: (user, title, price, description, category) => (postAd(user, title, price, description, category))
 };
 
 class Main extends Component {
@@ -52,7 +53,7 @@ class Main extends Component {
                             <Route path="/blog/:blogId" component={BlogWithId} />
                             <Route path="/store/detail" render={(props) => <StoreDetail />} />
                             <Route path="/store" render={(props) => <Store />} />
-                            <Route path="/classifieds" render={(props) => <Classifieds />} />
+                            <Route path="/classifieds" render={(props) => <Classifieds postAd={this.props.postAd} classifiedsData={this.props.classifiedsData}/>} />
                             <Route path="/recipes" render={(props) => <Recipes />} />
                             <Route path="/plantdb" render={(props) => <PlantDB />} />
                             <Route path="/home" render={(props) => <Home />} />
