@@ -2,8 +2,9 @@ import React from 'react';
 import BlogPara from './BlogPara';
 import Avatar from '../Header/Avatar';
 import {
-    Card, Col, Button, CardImg, CardDeck, CardTitle, CardText, CardGroup, CardColumns, CardSubtitle, CardBody, Row
+    Card, CardImg, CardTitle, CardText, CardBody, Row, CardFooter
 } from 'reactstrap';
+import "./BlogSummary.css"
 
 function BlogPost({ post }) {
 
@@ -14,7 +15,7 @@ function BlogPost({ post }) {
             <CardBody>
                 <Row>
                     <CardTitle>
-                        <h5>{post.title}</h5>
+                        <h1>{post.title}</h1>
                     </CardTitle>
                 </Row>
                 <Row className="mx-1">
@@ -24,17 +25,14 @@ function BlogPost({ post }) {
                     <BlogPara body={post.body} />
                 </CardText>
                 <div className="container separator-line"></div>
-                <Row>
+                <CardFooter className="blogFoot">
                     <span className="social1">
-                        <i className="fa fa-reply social"></i>
-                        <i className="fa fa-comment-o social"></i>
-                        <i className="fa fa-heart social"></i>
-                        <i className="fa fa-share-alt social"></i>
+                        <i className="fa fa-reply reply social"></i>
+                        <i className="fa fa-comment-o comment social"></i>
+                        <i className="fa fa-heart heart social"></i>
+                        <i className="fa fa-share-alt share social"></i>
                     </span>
-                </Row>
-                <Row>
-
-                </Row>
+                </CardFooter>
 
             </CardBody>
         </Card>
